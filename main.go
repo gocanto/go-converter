@@ -3,11 +3,18 @@ package main
 import (
 	converter "converter/entity"
 	"fmt"
-	"reflect"
 )
 
 func main()  {
-	currency := converter.Currency{
+	usd := converter.Currency{
+		Code: "USD",
+		Name: "USD",
+		Symbol: "$",
+		IsoCode: "1",
+		IsoMinorUnit: 1,
+	}
+
+	sgd := converter.Currency{
 		Code: "SGD",
 		Name: "Singapore Dollar",
 		Symbol: "$",
@@ -15,13 +22,19 @@ func main()  {
 		IsoMinorUnit: 1,
 	}
 
-	//if reflect.Type(converter.Currency{}) {
-	//	fmt.Println("YES")
-	//}
+	collection := converter.Make()
 
-	name := "Gus"
+	collection.Add(sgd)
+	collection.Add(usd)
 
-	fmt.Println(reflect.TypeOf(currency))
-	fmt.Println(reflect.TypeOf(name))
-	fmt.Println(reflect.TypeOf(currency))
+	//collection.RemoveByCode("USD")
+	err := collection.Remove(usd)
+
+	if err != nil {
+		fmt.Println("error", err)
+		return 
+	}
+
+	fmt.Println(collection.Count())
+	fmt.Println(collection.All())
 }
