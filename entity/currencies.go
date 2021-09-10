@@ -19,17 +19,27 @@ func (current *Currencies) Add(currency Currency)  {
 	(*current.Items)[currency.Code] = currency
 }
 
-func (current *Currencies) Forget(abstract interface{}) error {
-	target := ""
+func (current *Currencies) Find(abstract interface{}) (Currency, error) {
 	items := *current.Items
+	target, err := getCodeFrom(abstract)
 
-	switch value := abstract.(type) {
-		case string:
-			target = value
-		case Currency:
-			target = value.Code
-		default:
-			return errors.New(fmt.Sprintf("The given abstract [%v] is invalid", abstract))
+	if err != nil {
+		return Currency{}, err
+	}
+
+	if currency, exists := items[target]; exists {
+		return currency, nil
+	}
+
+	return Currency{}, errors.New(fmt.Sprintf("The given target [%v] does not exist", target))
+}
+
+func (current *Currencies) Forget(abstract interface{}) error {
+	items := *current.Items
+	target, err := getCodeFrom(abstract)
+
+	if err != nil {
+		return err
 	}
 
 	delete(items, target)

@@ -27,14 +27,19 @@ func main()  {
 	collection.Add(sgd)
 	collection.Add(usd)
 
-	//collection.RemoveByCode("USD")
-	err := collection.Forget(usd)
-
-	if err != nil {
+	if err := collection.Forget(usd); err != nil {
 		fmt.Println("error", err)
 		return 
 	}
 
+	currency, err := collection.Find(sgd)
+
+	if err != nil {
+		fmt.Println("error", err)
+		return
+	}
+
+	fmt.Println(currency)
 	fmt.Println(collection.Count())
 	fmt.Println(collection.All())
 }
