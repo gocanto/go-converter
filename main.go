@@ -28,7 +28,7 @@ func main()  {
 	collection.Add(usd)
 
 	//collection.RemoveByCode("USD")
-	err := collection.Remove(usd)
+	err := collection.Forget(usd)
 
 	if err != nil {
 		fmt.Println("error", err)

@@ -19,7 +19,7 @@ func (current *Currencies) Add(currency Currency)  {
 	(*current.Items)[currency.Code] = currency
 }
 
-func (current *Currencies) Remove(abstract interface{}) (error error) {
+func (current *Currencies) Forget(abstract interface{}) error {
 	target := ""
 	items := *current.Items
 
