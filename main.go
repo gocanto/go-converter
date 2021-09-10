@@ -10,6 +10,7 @@ func main()  {
 		Code: "USD",
 		Name: "USD",
 		Symbol: "$",
+		Rate: 1,
 		IsoCode: "1",
 		IsoMinorUnit: 1,
 	}
@@ -18,6 +19,7 @@ func main()  {
 		Code: "SGD",
 		Name: "Singapore Dollar",
 		Symbol: "$",
+		Rate: 2,
 		IsoCode: "1",
 		IsoMinorUnit: 1,
 	}
@@ -29,7 +31,7 @@ func main()  {
 
 	if err := collection.Forget(usd); err != nil {
 		fmt.Println("error", err)
-		return 
+		return
 	}
 
 	currency, err := collection.Find(sgd)
