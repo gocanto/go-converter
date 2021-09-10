@@ -1,10 +1,8 @@
 package converter
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
-	"reflect"
 )
 
 type Currencies struct {
@@ -21,24 +19,20 @@ func (current *Currencies) Add(currency Currency)  {
 	(*current.Items)[currency.Code] = currency
 }
 
-func (current *Currencies) Remove(target interface{}) (error error) {
+func (current *Currencies) Remove(abstract interface{}) (error error) {
+	target := ""
 	items := *current.Items
-	scope := reflect.TypeOf(target).String()
 
-	if scope == "string" {
-		delete(items, fmt.Sprintf("%v", target))
-		current.Items = &items
-
-		return nil
+	switch value := abstract.(type) {
+		case string:
+			target = value
+		case Currency:
+			target = value.Code
+		default:
+			return errors.New(fmt.Sprintf("The given abstract [%v] is invalid", abstract))
 	}
 
-	currency, err := resolveCurrencyFrom(target)
-
-	if err != nil {
-		return err
-	}
-
-	delete(items, currency.Code)
+	delete(items, target)
 	current.Items = &items
 
 	return nil
@@ -50,20 +44,4 @@ func (current *Currencies) All() map[string]Currency {
 
 func (current *Currencies) Count() int {
 	return len(*current.Items)
-}
-
-func resolveCurrencyFrom(input interface{}) (currency Currency, err error) {
-	target := Currency{}
-	data, _ := json.Marshal(input)
-	err = json.Unmarshal(data, &target)
-
-	if err != nil {
-		return  Currency{}, err
-	}
-
-	if target.Code == "" {
-		return Currency{}, errors.New("the given currency is invalid")
-	}
-
-	return target, nil
 }
