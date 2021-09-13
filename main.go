@@ -1,8 +1,8 @@
 package main
 
 import (
-	"converter/entity"
 	"fmt"
+	"github.com/voyago/converter/entity"
 )
 
 func main() {

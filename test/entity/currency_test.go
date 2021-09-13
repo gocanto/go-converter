@@ -1,7 +1,7 @@
 package test_entity
 
 import (
-	"converter/entity"
+	"github.com/voyago/converter/entity"
 	"testing"
 )
 
