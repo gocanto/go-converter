@@ -1,4 +1,4 @@
-package converter
+package entity
 
 import (
 	"errors"
@@ -9,19 +9,19 @@ type Currencies struct {
 	Items *map[string]Currency
 }
 
-func Make() Currencies  {
+func Make() Currencies {
 	items := make(map[string]Currency)
 
 	return Currencies{Items: &items}
 }
 
-func (current *Currencies) Add(currency Currency)  {
+func (current *Currencies) Add(currency Currency) {
 	(*current.Items)[currency.Code] = currency
 }
 
 func (current *Currencies) Find(abstract interface{}) (Currency, error) {
 	items := *current.Items
-	target, err := getCodeFrom(abstract)
+	target, err := resolveCurrencyCode(abstract)
 
 	if err != nil {
 		return Currency{}, err
@@ -36,7 +36,7 @@ func (current *Currencies) Find(abstract interface{}) (Currency, error) {
 
 func (current *Currencies) Forget(abstract interface{}) error {
 	items := *current.Items
-	target, err := getCodeFrom(abstract)
+	target, err := resolveCurrencyCode(abstract)
 
 	if err != nil {
 		return err
@@ -54,4 +54,15 @@ func (current *Currencies) All() map[string]Currency {
 
 func (current *Currencies) Count() int {
 	return len(*current.Items)
+}
+
+func resolveCurrencyCode(abstract interface{}) (string, error) {
+	switch value := abstract.(type) {
+	case string:
+		return value, nil
+	case Currency:
+		return value.Code, nil
+	default:
+		return "", errors.New(fmt.Sprintf("The given abstract [%v] is invalid", abstract))
+	}
 }

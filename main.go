@@ -1,30 +1,30 @@
 package main
 
 import (
-	converter "converter/entity"
+	"converter/entity"
 	"fmt"
 )
 
-func main()  {
-	usd := converter.Currency{
-		Code: "USD",
-		Name: "USD",
-		Symbol: "$",
-		Rate: 1,
-		IsoCode: "1",
+func main() {
+	usd := entity.Currency{
+		Code:         "USD",
+		Name:         "USD",
+		Symbol:       "$",
+		Rate:         1,
+		IsoCode:      "1",
 		IsoMinorUnit: 1,
 	}
 
-	sgd := converter.Currency{
-		Code: "SGD",
-		Name: "Singapore Dollar",
-		Symbol: "$",
-		Rate: 2,
-		IsoCode: "1",
+	sgd := entity.Currency{
+		Code:         "SGD",
+		Name:         "Singapore Dollar",
+		Symbol:       "$",
+		Rate:         2,
+		IsoCode:      "1",
 		IsoMinorUnit: 1,
 	}
 
-	collection := converter.Make()
+	collection := entity.Make()
 
 	collection.Add(sgd)
 	collection.Add(usd)
