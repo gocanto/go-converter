@@ -5,6 +5,8 @@ import (
 	"github.com/voyago/converter/pkg/entity"
 )
 
+
+//trigger CI
 func main() {
 	usd := entity.Currency{
 		Code:         "USD",
