@@ -11,8 +11,8 @@ func main() {
 		Name:         "USD",
 		Symbol:       "$",
 		Rate:         1,
-		IsoCode:      "1",
-		IsoMinorUnit: 1,
+		IsoCode:      840,
+		IsoMinorUnit: 2,
 	}
 
 	sgd := entity.Currency{
@@ -20,8 +20,8 @@ func main() {
 		Name:         "Singapore Dollar",
 		Symbol:       "$",
 		Rate:         2,
-		IsoCode:      "1",
-		IsoMinorUnit: 1,
+		IsoCode:      702,
+		IsoMinorUnit: 2,
 	}
 
 	collection := entity.Make()
