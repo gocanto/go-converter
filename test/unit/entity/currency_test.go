@@ -1,19 +1,12 @@
 package test_entity
 
 import (
-	"github.com/voyago/converter/pkg/entity"
-	"github.com/voyago/converter/test/support"
+	"github.com/voyago/converter/test"
 	"testing"
 )
 
-const stub = "./../../__fixtures__/currency.json"
-
 func TestCurrencyJsonFormat(t *testing.T) {
-	currency := entity.Currency{}
-
-	if err := test_support.ParseJson(stub, &currency); err != nil {
-		t.Errorf("There was an error [%d] opening the given currency stub", err)
-	}
+	currency := test.Currency(t)
 
 	if currency.Code != "SGD" {
 		t.Errorf("Currency code [%s] is invalid", currency.Code)
