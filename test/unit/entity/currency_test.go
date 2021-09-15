@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestCurrencyJsonFormat(t *testing.T) {
+func TestItHoldsBasicInfo(t *testing.T) {
 	currency := test.Currency(t)
 
 	if currency.Code != "SGD" {
