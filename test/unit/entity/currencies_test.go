@@ -2,7 +2,7 @@ package test_entity
 
 import (
 	"github.com/voyago/converter/pkg/entity"
-	testSupport "github.com/voyago/converter/test/support"
+	"github.com/voyago/converter/test"
 	"testing"
 )
 
@@ -16,7 +16,7 @@ func TestItHoldsValidData(t *testing.T) {
 
 func TestItAddsCurrencies(t *testing.T) {
 	collection := mockCurrencies()
-	collection.Add(mockCurrency(t))
+	collection.Add(test.Currency(t))
 
 	if collection.Count() != 1 || len(collection.All()) != 1 {
 		t.Errorf("The given currencies size is invalid")
@@ -30,7 +30,7 @@ func TestItFindsCurrencies(t *testing.T) {
 		t.Errorf("The given collection found a missing [SGD] item")
 	}
 
-	currency := mockCurrency(t)
+	currency := test.Currency(t)
 
 	collection.Add(currency)
 	byCode, _ := collection.Find("SGD")
@@ -43,7 +43,7 @@ func TestItFindsCurrencies(t *testing.T) {
 
 func TestItRemovesCurrencies(t *testing.T) {
 	collection := mockCurrencies()
-	currency := mockCurrency(t)
+	currency := test.Currency(t)
 
 	collection.Add(currency)
 
@@ -72,14 +72,4 @@ func mockCurrencies() entity.Currencies {
 	items := make(map[string]entity.Currency)
 
 	return entity.Currencies{Items: &items}
-}
-
-func mockCurrency(t *testing.T) entity.Currency {
-	currency := entity.Currency{}
-
-	if err := testSupport.ParseJson(stub, &currency); err != nil {
-		t.Errorf("There was an error [%d] opening the given currency stub", err)
-	}
-
-	return currency
 }

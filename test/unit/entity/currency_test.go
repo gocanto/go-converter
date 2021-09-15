@@ -2,18 +2,30 @@ package test_entity
 
 import (
 	"github.com/voyago/converter/pkg/entity"
-	"github.com/voyago/converter/test/support"
+	"github.com/voyago/converter/test"
 	"testing"
 )
 
-const stub = "./../../__fixtures__/currency.json"
+func TestItComputesValidMultipliers(t *testing.T) {
+	a := entity.Currency{IsoMinorUnit: 1}
+	b := entity.Currency{IsoMinorUnit: 2}
+	c := entity.Currency{IsoMinorUnit: 3}
 
-func TestCurrencyJsonFormat(t *testing.T) {
-	currency := entity.Currency{}
-
-	if err := test_support.ParseJson(stub, &currency); err != nil {
-		t.Errorf("There was an error [%d] opening the given currency stub", err)
+	if value := a.GetMultiplier(); value != 10 {
+		t.Errorf("The given multiplier [%v] is invalid", value)
 	}
+
+	if value := b.GetMultiplier(); value != 100 {
+		t.Errorf("The given multiplier [%v] is invalid", value)
+	}
+
+	if value := c.GetMultiplier(); value != 1000 {
+		t.Errorf("The given multiplier [%v] is invalid", value)
+	}
+}
+
+func TestItHoldsBasicInfo(t *testing.T) {
+	currency := test.Currency(t)
 
 	if currency.Code != "SGD" {
 		t.Errorf("Currency code [%s] is invalid", currency.Code)
