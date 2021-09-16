@@ -13,7 +13,7 @@ func TestConverter(t *testing.T) {
 	//Exchange rate = 1/0.74
 	sgd, usd := createCurrencies(t)
 	price, _ := entity.MakePrice(sgd, 1)
-	ratePrice, _ := entity.MakePrice(usd, usd.Rate)
+	ratePrice, _ := usd.ToRatePrice()
 
 	targetBaseAmount, _ := entity.MakePrice(usd, float64(price.Amount) / ratePrice.ToFloat())
 
@@ -26,7 +26,7 @@ func TestConverter(t *testing.T) {
 	sgd.Rate = 0.7462
 
 	price, _ = entity.MakePrice(usd, 1)
-	ratePrice, _ = entity.MakePrice(sgd, sgd.Rate)
+	ratePrice, _ = usd.ToRatePrice()
 
 	targetBaseAmount, _ = entity.MakePrice(sgd, float64(price.Amount) / ratePrice.ToFloat())
 

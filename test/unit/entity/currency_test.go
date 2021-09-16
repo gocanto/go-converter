@@ -24,6 +24,21 @@ func TestItComputesValidMultipliers(t *testing.T) {
 	}
 }
 
+func TestItCanConvertItSelfToRatePrice(t *testing.T) {
+	currency := test.Currency(t)
+	currency.Rate = 100
+
+	rate, err := currency.ToRatePrice()
+
+	if err != nil {
+		t.Errorf("%v", err)
+	}
+
+	if rate.ToString() != "$ 100.00" {
+		t.Errorf("The given rate amount [100] is invalid")
+	}
+}
+
 func TestItHoldsBasicInfo(t *testing.T) {
 	currency := test.Currency(t)
 
