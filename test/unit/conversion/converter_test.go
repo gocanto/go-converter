@@ -1,36 +1,58 @@
 package test_conversion
 
 import (
-	"fmt"
+	"github.com/voyago/converter/pkg/conversion"
 	"github.com/voyago/converter/pkg/entity"
 	"github.com/voyago/converter/test"
 	"testing"
 )
 
-func TestConverter(t *testing.T) {
-
+func TestItConvertsFromSgdToUsd(t *testing.T) {
 	//1 SGD to USD = 0.74
 	//Exchange rate = 1/0.74
+
 	sgd, usd := createCurrencies(t)
 	price, _ := entity.MakePrice(sgd, 1)
-	ratePrice, _ := usd.ToRatePrice()
+	converter := conversion.MakeConverter(price)
 
-	targetBaseAmount, _ := entity.MakePrice(usd, float64(price.Amount) / ratePrice.ToFloat())
+	result, err := converter.ConvertTo(usd)
 
-	fmt.Println(price.Amount, "|", ratePrice.Amount, "|", targetBaseAmount.ToFloat())
-	fmt.Println("====================================================================================================")
+	if err != nil {
+		t.Errorf("%v", err)
+	}
 
+	if result.ToFloat() != 0.74 {
+		t.Errorf("The given [SGD to USD] conversion is invalid")
+	}
+
+	if result.ToString() != "$ 0.74" {
+		t.Errorf("The given [SGD to USD] format is invalid")
+	}
+}
+
+func TestItConvertsFromUsdToSgd(t *testing.T) {
 	//1 USD to SGD = 1.34
 	//Exchange rate = 1/1.34
+	sgd, usd := createCurrencies(t)
 	usd.Rate = 1
 	sgd.Rate = 0.7462
 
-	price, _ = entity.MakePrice(usd, 1)
-	ratePrice, _ = usd.ToRatePrice()
+	price, _ := entity.MakePrice(usd, 1)
+	converter := conversion.MakeConverter(price)
 
-	targetBaseAmount, _ = entity.MakePrice(sgd, float64(price.Amount) / ratePrice.ToFloat())
+	result, err := converter.ConvertTo(sgd)
 
-	fmt.Println(price.Amount, "|", ratePrice.Amount, "|", targetBaseAmount.ToFloat())
+	if err != nil {
+		t.Errorf("%v", err)
+	}
+
+	if result.ToFloat() != 1.35 {
+		t.Errorf("The given [USD to SGD] conversion is invalid")
+	}
+
+	if result.ToString() != "$ 1.35" {
+		t.Errorf("The given [USD to SGD] format is invalid")
+	}
 }
 
 func createCurrencies(t *testing.T) (entity.Currency, entity.Currency) {

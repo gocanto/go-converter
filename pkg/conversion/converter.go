@@ -1,32 +1,38 @@
 package conversion
 
 import (
-	"fmt"
 	"github.com/voyago/converter/pkg/contracts"
 	"github.com/voyago/converter/pkg/entity"
+	store "github.com/voyago/converter/pkg/store/repository"
 )
 
 type Converter struct {
-	Amount entity.Price
+	Price      entity.Price
 	repository contracts.CurrenciesRepository
 }
 
-func (current *Converter) Using (repository contracts.CurrenciesRepository)  {
+func MakeConverter(price entity.Price) Converter {
+	return Converter{Price: price, repository: store.DBRepository{}}
+}
+
+// WithRepository @todo check whether we need this at all
+func (current *Converter) WithRepository(repository contracts.CurrenciesRepository) {
 	(*current).repository = repository
 }
 
+func (current *Converter) WithPrice(price entity.Price) {
+	(*current).Price = price
+}
+
 func (current Converter) ConvertTo(currency entity.Currency) (entity.Price, error) {
-	rate := float32(current.Amount.Amount) / currency.Rate
+	rate, err := currency.ToRatePrice()
 
-	fmt.Println("rate:", rate)
+	if err != nil {
+		return entity.Price{}, err
+	}
 
-	//amount := current.Amount.ToFloat() * rate
-	//
-	//price, err := entity.MakePrice(currency, amount)
-	//
-	//if err != nil {
-	//	return entity.Price{}, err
-	//}
+	target := float64(current.Price.Amount) / rate.ToFloat()
+	price, _ := entity.MakePrice(currency, target)
 
-	return entity.Price{}, nil
+	return price, nil
 }
