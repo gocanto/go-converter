@@ -23,3 +23,13 @@ func (current Currency) GetMultiplier() int64  {
 
 	return 1
 }
+
+func (current Currency) ToRatePrice() (Price, error)  {
+	price, err := MakePrice(current, current.Rate)
+
+	if err != nil {
+		return Price{}, err
+	}
+
+	return price, nil
+}
