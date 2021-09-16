@@ -24,6 +24,12 @@ func (current Price) ToString() string {
 
 func MakePrice(currency Currency, abstract interface{}) (Price, error)  {
 	switch value := abstract.(type) {
+		case int64:
+			return Price{Amount: value, Currency: currency}, nil
+		case int32:
+			return Price{Amount: int64(value), Currency: currency}, nil
+		case int8:
+			return Price{Amount: int64(value), Currency: currency}, nil
 		case int:
 			return Price{Amount: int64(value), Currency: currency}, nil
 		case float32:
