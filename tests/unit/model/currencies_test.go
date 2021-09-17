@@ -1,8 +1,8 @@
-package test_entity
+package model
 
 import (
 	"github.com/voyago/converter/src/model"
-	"github.com/voyago/converter/test"
+	"github.com/voyago/converter/tests/mock"
 	"testing"
 )
 
@@ -16,7 +16,7 @@ func TestItHoldsValidData(t *testing.T) {
 
 func TestItAddsCurrencies(t *testing.T) {
 	collection := mockCurrencies()
-	collection.Add(test.Currency(t))
+	collection.Add(mock.Currency(t))
 
 	if collection.Count() != 1 || len(collection.All()) != 1 {
 		t.Errorf("The given currencies size is invalid")
@@ -30,7 +30,7 @@ func TestItFindsCurrencies(t *testing.T) {
 		t.Errorf("The given collection found a missing [SGD] item")
 	}
 
-	currency := test.Currency(t)
+	currency := mock.Currency(t)
 
 	collection.Add(currency)
 	byCode, _ := collection.Find("SGD")
@@ -43,7 +43,7 @@ func TestItFindsCurrencies(t *testing.T) {
 
 func TestItRemovesCurrencies(t *testing.T) {
 	collection := mockCurrencies()
-	currency := test.Currency(t)
+	currency := mock.Currency(t)
 
 	collection.Add(currency)
 

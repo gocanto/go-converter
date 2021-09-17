@@ -1,8 +1,8 @@
-package test_entity
+package model
 
 import (
 	"github.com/voyago/converter/src/model"
-	"github.com/voyago/converter/test"
+	"github.com/voyago/converter/tests/mock"
 	"testing"
 )
 
@@ -11,21 +11,21 @@ func TestItComputesValidMultipliers(t *testing.T) {
 	b := model.Currency{IsoMinorUnit: 2}
 	c := model.Currency{IsoMinorUnit: 3}
 
-	if value := a.GetMultiplier(); value != 10 {
+	if value := a.Multiplier(); value != 10 {
 		t.Errorf("The given multiplier [%v] is invalid", value)
 	}
 
-	if value := b.GetMultiplier(); value != 100 {
+	if value := b.Multiplier(); value != 100 {
 		t.Errorf("The given multiplier [%v] is invalid", value)
 	}
 
-	if value := c.GetMultiplier(); value != 1000 {
+	if value := c.Multiplier(); value != 1000 {
 		t.Errorf("The given multiplier [%v] is invalid", value)
 	}
 }
 
 func TestItCanConvertItSelfToRatePrice(t *testing.T) {
-	currency := test.Currency(t)
+	currency := mock.Currency(t)
 	currency.Rate = 100
 
 	rate, err := currency.ToRatePrice()
@@ -40,7 +40,7 @@ func TestItCanConvertItSelfToRatePrice(t *testing.T) {
 }
 
 func TestItHoldsBasicInfo(t *testing.T) {
-	currency := test.Currency(t)
+	currency := mock.Currency(t)
 
 	if currency.Code != "SGD" {
 		t.Errorf("Currency code [%s] is invalid", currency.Code)

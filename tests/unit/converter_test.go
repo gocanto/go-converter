@@ -1,9 +1,9 @@
-package test_conversion
+package unit
 
 import (
 	"github.com/voyago/converter/src"
 	"github.com/voyago/converter/src/model"
-	"github.com/voyago/converter/test"
+	"github.com/voyago/converter/tests/mock"
 	"testing"
 )
 
@@ -56,12 +56,12 @@ func TestItConvertsFromUsdToSgd(t *testing.T) {
 }
 
 func createCurrencies(t *testing.T) (model.Currency, model.Currency) {
-	sgd := test.Currency(t)
+	sgd := mock.Currency(t)
 	sgd.Code = "SGD"
 	sgd.Rate = 1
 	sgd.IsoMinorUnit = 2
 
-	usd := test.Currency(t)
+	usd := mock.Currency(t)
 	usd.Code = "USD"
 	usd.Rate = 1.34
 	usd.IsoMinorUnit = 2

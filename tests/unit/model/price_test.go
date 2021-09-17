@@ -1,13 +1,13 @@
-package test_entity
+package model
 
 import (
 	"github.com/voyago/converter/src/model"
-	"github.com/voyago/converter/test"
+	"github.com/voyago/converter/tests/mock"
 	"testing"
 )
 
 func TestItAllowsForBasicFormatting(t *testing.T) {
-	currency := test.Currency(t) //SGD
+	currency := mock.Currency(t) //SGD
 
 	price, err := model.MakePrice(currency, "0.99")
 
@@ -22,7 +22,7 @@ func TestItAllowsForBasicFormatting(t *testing.T) {
 }
 
 func TestItAllowsCreationFromIntegers(t *testing.T) {
-	currency := test.Currency(t)
+	currency := mock.Currency(t)
 
 	price, err := model.MakePrice(currency, 199)
 	if err != nil || price.Amount != 199 || price.ToFloat() != 1.99 {
@@ -36,7 +36,7 @@ func TestItAllowsCreationFromIntegers(t *testing.T) {
 }
 
 func TestItAllowsCreationFromStrings(t *testing.T) {
-	currency := test.Currency(t)
+	currency := mock.Currency(t)
 
 	price, err := model.MakePrice(currency, "0.99")
 	if err != nil || price.Amount != 99 || price.ToFloat() != 0.99 {
@@ -55,7 +55,7 @@ func TestItAllowsCreationFromStrings(t *testing.T) {
 }
 
 func TestItAllowsCreationFromFloaters(t *testing.T) {
-	currency := test.Currency(t)
+	currency := mock.Currency(t)
 
 	price, err := model.MakePrice(currency, 1.99)
 	if err != nil || price.Amount != 199 || price.ToFloat() != 1.99 {

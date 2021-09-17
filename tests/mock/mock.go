@@ -1,19 +1,21 @@
-package test
+package mock
 
 import (
 	"github.com/voyago/converter/src/model"
-	"path/filepath"
+	"github.com/voyago/converter/tests/support"
 	"runtime"
+	"strings"
 	"testing"
 )
 
 func Currency(t *testing.T) model.Currency {
 	currency := model.Currency{}
-
 	_, fileName, _, _ := runtime.Caller(0)
-	fullPath := filepath.Dir(fileName) + "/__fixtures__/currency.json"
 
-	if err := ParseJson(fullPath, &currency); err != nil {
+	baseDir := strings.Split(fileName, "/mock/mock.go")[0]
+	fullPath := baseDir + "/__fixtures__/currency.json"
+
+	if err := support.ParseJson(fullPath, &currency); err != nil {
 		t.Errorf("There was an error mocking a new currency: %v", err)
 		t.FailNow()
 	}
