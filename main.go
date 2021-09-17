@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/joho/godotenv"
-	_ "github.com/joho/godotenv/autoload"
 )
 
 func main() {
