@@ -1,7 +1,7 @@
 package test_entity
 
 import (
-	"github.com/voyago/converter/pkg/entity"
+	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/test"
 	"testing"
 )
@@ -51,7 +51,7 @@ func TestItRemovesCurrencies(t *testing.T) {
 		t.Errorf("The given currencies size is invalid")
 	}
 
-	//by entity
+	//by model
 	if err := collection.Forget(currency); err != nil {
 		t.Errorf("The given currency code [%s] could not be removed", currency.Code)
 	}
@@ -68,8 +68,8 @@ func TestItRemovesCurrencies(t *testing.T) {
 	}
 }
 
-func mockCurrencies() entity.Currencies {
-	items := make(map[string]entity.Currency)
+func mockCurrencies() model.Currencies {
+	items := make(map[string]model.Currency)
 
-	return entity.Currencies{Items: &items}
+	return model.Currencies{Items: &items}
 }

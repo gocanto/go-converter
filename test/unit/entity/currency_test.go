@@ -1,15 +1,15 @@
 package test_entity
 
 import (
-	"github.com/voyago/converter/pkg/entity"
+	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/test"
 	"testing"
 )
 
 func TestItComputesValidMultipliers(t *testing.T) {
-	a := entity.Currency{IsoMinorUnit: 1}
-	b := entity.Currency{IsoMinorUnit: 2}
-	c := entity.Currency{IsoMinorUnit: 3}
+	a := model.Currency{IsoMinorUnit: 1}
+	b := model.Currency{IsoMinorUnit: 2}
+	c := model.Currency{IsoMinorUnit: 3}
 
 	if value := a.GetMultiplier(); value != 10 {
 		t.Errorf("The given multiplier [%v] is invalid", value)

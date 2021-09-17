@@ -1,8 +1,8 @@
 package test_conversion
 
 import (
-	"github.com/voyago/converter/pkg/conversion"
-	"github.com/voyago/converter/pkg/entity"
+	"github.com/voyago/converter/pkg"
+	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/test"
 	"testing"
 )
@@ -12,8 +12,8 @@ func TestItConvertsFromSgdToUsd(t *testing.T) {
 	//Exchange rate = 1/0.74
 
 	sgd, usd := createCurrencies(t)
-	price, _ := entity.MakePrice(sgd, 1)
-	converter := conversion.MakeConverter(price)
+	price, _ := model.MakePrice(sgd, 1)
+	converter := pkg.MakeConverter(price)
 
 	result, err := converter.ConvertTo(usd)
 
@@ -37,8 +37,8 @@ func TestItConvertsFromUsdToSgd(t *testing.T) {
 	usd.Rate = 1
 	sgd.Rate = 0.7462
 
-	price, _ := entity.MakePrice(usd, 1)
-	converter := conversion.MakeConverter(price)
+	price, _ := model.MakePrice(usd, 1)
+	converter := pkg.MakeConverter(price)
 
 	result, err := converter.ConvertTo(sgd)
 
@@ -55,7 +55,7 @@ func TestItConvertsFromUsdToSgd(t *testing.T) {
 	}
 }
 
-func createCurrencies(t *testing.T) (entity.Currency, entity.Currency) {
+func createCurrencies(t *testing.T) (model.Currency, model.Currency) {
 	sgd := test.Currency(t)
 	sgd.Code = "SGD"
 	sgd.Rate = 1

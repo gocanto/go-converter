@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/voyago/converter/pkg/entity"
+	"github.com/voyago/converter/pkg/model"
 )
 
 func main() {
-	usd := entity.Currency{
+	usd := model.Currency{
 		Code:         "USD",
 		Name:         "USD",
 		Symbol:       "$",
@@ -15,7 +15,7 @@ func main() {
 		IsoMinorUnit: 2,
 	}
 
-	sgd := entity.Currency{
+	sgd := model.Currency{
 		Code:         "SGD",
 		Name:         "Singapore Dollar",
 		Symbol:       "$",
@@ -24,7 +24,7 @@ func main() {
 		IsoMinorUnit: 2,
 	}
 
-	collection := entity.Make()
+	collection := model.Make()
 
 	collection.Add(sgd)
 	collection.Add(usd)

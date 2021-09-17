@@ -1,14 +1,14 @@
 package test
 
 import (
-	"github.com/voyago/converter/pkg/entity"
+	"github.com/voyago/converter/pkg/model"
 	"path/filepath"
 	"runtime"
 	"testing"
 )
 
-func Currency(t *testing.T) entity.Currency {
-	currency := entity.Currency{}
+func Currency(t *testing.T) model.Currency {
+	currency := model.Currency{}
 
 	_, fileName, _, _ := runtime.Caller(0)
 	fullPath := filepath.Dir(fileName) + "/__fixtures__/currency.json"

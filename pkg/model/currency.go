@@ -1,4 +1,4 @@
-package entity
+package model
 
 import (
 	"github.com/voyago/converter/pkg/support"
