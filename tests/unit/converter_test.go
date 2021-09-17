@@ -1,9 +1,9 @@
-package test_conversion
+package unit
 
 import (
-	"github.com/voyago/converter/pkg/conversion"
-	"github.com/voyago/converter/pkg/entity"
-	"github.com/voyago/converter/test"
+	"github.com/voyago/converter/src/conversion"
+	"github.com/voyago/converter/src/model"
+	"github.com/voyago/converter/tests/mock"
 	"testing"
 )
 
@@ -12,10 +12,9 @@ func TestItConvertsFromSgdToUsd(t *testing.T) {
 	//Exchange rate = 1/0.74
 
 	sgd, usd := createCurrencies(t)
-	price, _ := entity.MakePrice(sgd, 1)
-	converter := conversion.MakeConverter(price)
 
-	result, err := converter.ConvertTo(usd)
+	price, _ := model.MakePrice(sgd, 1)
+	result, err := conversion.Convert(price, usd)
 
 	if err != nil {
 		t.Errorf("%v", err)
@@ -37,10 +36,8 @@ func TestItConvertsFromUsdToSgd(t *testing.T) {
 	usd.Rate = 1
 	sgd.Rate = 0.7462
 
-	price, _ := entity.MakePrice(usd, 1)
-	converter := conversion.MakeConverter(price)
-
-	result, err := converter.ConvertTo(sgd)
+	price, _ := model.MakePrice(usd, 1)
+	result, err := conversion.Convert(price, sgd)
 
 	if err != nil {
 		t.Errorf("%v", err)
@@ -55,13 +52,13 @@ func TestItConvertsFromUsdToSgd(t *testing.T) {
 	}
 }
 
-func createCurrencies(t *testing.T) (entity.Currency, entity.Currency) {
-	sgd := test.Currency(t)
+func createCurrencies(t *testing.T) (model.Currency, model.Currency) {
+	sgd := mock.Currency(t)
 	sgd.Code = "SGD"
 	sgd.Rate = 1
 	sgd.IsoMinorUnit = 2
 
-	usd := test.Currency(t)
+	usd := mock.Currency(t)
 	usd.Code = "USD"
 	usd.Rate = 1.34
 	usd.IsoMinorUnit = 2

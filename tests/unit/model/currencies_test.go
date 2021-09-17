@@ -1,8 +1,8 @@
-package test_entity
+package model
 
 import (
-	"github.com/voyago/converter/pkg/entity"
-	"github.com/voyago/converter/test"
+	"github.com/voyago/converter/src/model"
+	"github.com/voyago/converter/tests/mock"
 	"testing"
 )
 
@@ -16,7 +16,7 @@ func TestItHoldsValidData(t *testing.T) {
 
 func TestItAddsCurrencies(t *testing.T) {
 	collection := mockCurrencies()
-	collection.Add(test.Currency(t))
+	collection.Add(mock.Currency(t))
 
 	if collection.Count() != 1 || len(collection.All()) != 1 {
 		t.Errorf("The given currencies size is invalid")
@@ -30,7 +30,7 @@ func TestItFindsCurrencies(t *testing.T) {
 		t.Errorf("The given collection found a missing [SGD] item")
 	}
 
-	currency := test.Currency(t)
+	currency := mock.Currency(t)
 
 	collection.Add(currency)
 	byCode, _ := collection.Find("SGD")
@@ -43,7 +43,7 @@ func TestItFindsCurrencies(t *testing.T) {
 
 func TestItRemovesCurrencies(t *testing.T) {
 	collection := mockCurrencies()
-	currency := test.Currency(t)
+	currency := mock.Currency(t)
 
 	collection.Add(currency)
 
@@ -51,7 +51,7 @@ func TestItRemovesCurrencies(t *testing.T) {
 		t.Errorf("The given currencies size is invalid")
 	}
 
-	//by entity
+	//by model
 	if err := collection.Forget(currency); err != nil {
 		t.Errorf("The given currency code [%s] could not be removed", currency.Code)
 	}
@@ -68,8 +68,8 @@ func TestItRemovesCurrencies(t *testing.T) {
 	}
 }
 
-func mockCurrencies() entity.Currencies {
-	items := make(map[string]entity.Currency)
+func mockCurrencies() model.Currencies {
+	items := make(map[string]model.Currency)
 
-	return entity.Currencies{Items: &items}
+	return model.Currencies{Items: &items}
 }

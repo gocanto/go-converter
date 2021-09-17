@@ -1,7 +1,7 @@
-package entity
+package model
 
 import (
-	"github.com/voyago/converter/pkg/support"
+	"github.com/voyago/converter/src/support"
 )
 
 type Currency struct {
@@ -13,7 +13,7 @@ type Currency struct {
 	IsoMinorUnit int     `json:"iso_minor_unit"`
 }
 
-func (current Currency) GetMultiplier() int64  {
+func (current Currency) Multiplier() int64  {
 	target := support.Strings{Value: "1"}
 	target.RightPad("0", current.IsoMinorUnit)
 

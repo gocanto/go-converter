@@ -1,4 +1,4 @@
-package entity
+package model
 
 import (
 	"errors"
@@ -13,7 +13,7 @@ type Price struct {
 
 func (current Price) ToFloat() float64  {
 	amount := float64(current.Amount)
-	multiplier := float64(current.Currency.GetMultiplier())
+	multiplier := float64(current.Currency.Multiplier())
 
 	return amount / multiplier
 }
@@ -59,7 +59,7 @@ func fromString(currency Currency, value string) (Price, error) {
 
 func fromFloat32(currency Currency, target float32) Price {
 	amount := int64(
-		target * float32(currency.GetMultiplier()),
+		target * float32(currency.Multiplier()),
 	)
 
 	return Price{Amount: amount, Currency: currency}
@@ -67,7 +67,7 @@ func fromFloat32(currency Currency, target float32) Price {
 
 func fromFloat64(currency Currency, target float64) Price {
 	amount := int64(
-		target * float64(currency.GetMultiplier()),
+		target * float64(currency.Multiplier()),
 	)
 
 	return Price{Amount: amount, Currency: currency}
