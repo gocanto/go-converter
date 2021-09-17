@@ -1,7 +1,7 @@
-package pkg
+package src
 
 import (
-	"github.com/voyago/converter/pkg/model"
+	"github.com/voyago/converter/src/model"
 )
 
 type Converter struct {

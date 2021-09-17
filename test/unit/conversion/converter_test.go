@@ -1,8 +1,8 @@
 package test_conversion
 
 import (
-	"github.com/voyago/converter/pkg"
-	"github.com/voyago/converter/pkg/model"
+	"github.com/voyago/converter/src"
+	"github.com/voyago/converter/src/model"
 	"github.com/voyago/converter/test"
 	"testing"
 )
@@ -13,7 +13,7 @@ func TestItConvertsFromSgdToUsd(t *testing.T) {
 
 	sgd, usd := createCurrencies(t)
 	price, _ := model.MakePrice(sgd, 1)
-	converter := pkg.MakeConverter(price)
+	converter := src.MakeConverter(price)
 
 	result, err := converter.ConvertTo(usd)
 
@@ -38,7 +38,7 @@ func TestItConvertsFromUsdToSgd(t *testing.T) {
 	sgd.Rate = 0.7462
 
 	price, _ := model.MakePrice(usd, 1)
-	converter := pkg.MakeConverter(price)
+	converter := src.MakeConverter(price)
 
 	result, err := converter.ConvertTo(sgd)
 

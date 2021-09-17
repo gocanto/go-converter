@@ -1,7 +1,7 @@
 package test
 
 import (
-	"github.com/voyago/converter/pkg/model"
+	"github.com/voyago/converter/src/model"
 	"path/filepath"
 	"runtime"
 	"testing"

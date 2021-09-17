@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/voyago/converter/pkg/model"
+	"github.com/voyago/converter/src/model"
 )
 
 func main() {
