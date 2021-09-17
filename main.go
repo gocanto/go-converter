@@ -8,6 +8,9 @@ import (
 )
 
 func main() {
+	// 1 - create the request
+	// 2 - invoke the handler
+
 	myEnv, _ := godotenv.Read()
 
 	fmt.Printf("Welcome to the [%s] library... \n", myEnv["LIBRARY_NAME"])
