@@ -28,7 +28,7 @@ func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 	}
 
 	assert := func(current handler.CurrencyLayer) {
-		if current.ApiKey() == "" {
+		if current.ApiKey() != "" {
 			t.Errorf("The given key is invalid")
 		}
 
