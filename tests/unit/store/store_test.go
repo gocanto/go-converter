@@ -17,10 +17,14 @@ func TestItReturnsNilForInvalidDrivers(t *testing.T) {
 func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 	t.Parallel()
 
-	manager, err := store.MakeStore("currency-layer", "SGD")
+	manager, err := store.Mock("currency-layer", "SGD")
 
 	if err != nil {
 		t.Errorf("%v", err)
+	}
+
+	if !manager.Env.IsTest() {
+		t.Errorf("The given store environment is invalid.")
 	}
 
 	if manager.Currency != "SGD" {
@@ -29,7 +33,7 @@ func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 
 	assert := func(current handler.CurrencyLayer) {
 		if current.ApiKey() != "" {
-			t.Errorf("The given key is invalid")
+			t.Errorf("The given key is invalid, %s", current.ApiKey())
 		}
 
 		if current.Currency != "SGD" {

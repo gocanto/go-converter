@@ -20,16 +20,17 @@ func MakeStore(driver string, currency string) (*Store, error) {
 		return nil, errors.New("the store was unable to load the environment information")
 	}
 
-	store := &Store{
-		Currency: currency,
-		Env: *env,
+	return resolve(env, driver, currency)
+}
+
+func Mock(driver string, currency string) (*Store, error) {
+	env, err := environment.MakeWith("testing")
+
+	if err != nil {
+		return nil, errors.New("the store was unable to load the environment information")
 	}
 
-	if err := store.build(driver); err != nil {
-		return nil, err
-	}
-
-	return store, nil
+	return resolve(env, driver, currency)
 }
 
 func (current *Store) build(driver string) error {
@@ -44,4 +45,17 @@ func (current *Store) build(driver string) error {
 	}
 
 	return nil
+}
+
+func resolve(env *environment.Env, driver string, currency string) (*Store, error) {
+	store := &Store{
+		Currency: currency,
+		Env: *env,
+	}
+
+	if err := store.build(driver); err != nil {
+		return nil, err
+	}
+
+	return store, nil
 }
