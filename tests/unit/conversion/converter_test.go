@@ -1,4 +1,4 @@
-package unit
+package conversion
 
 import (
 	"github.com/voyago/converter/src/conversion"
