@@ -7,6 +7,7 @@ import (
 )
 
 func TestItAllowsForBasicFormatting(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t) //SGD
 
 	price, err := model.MakePrice(currency, "0.99")
@@ -22,6 +23,7 @@ func TestItAllowsForBasicFormatting(t *testing.T) {
 }
 
 func TestItAllowsCreationFromIntegers(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t)
 
 	price, err := model.MakePrice(currency, 199)
@@ -36,6 +38,7 @@ func TestItAllowsCreationFromIntegers(t *testing.T) {
 }
 
 func TestItAllowsCreationFromStrings(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t)
 
 	price, err := model.MakePrice(currency, "0.99")
@@ -55,6 +58,7 @@ func TestItAllowsCreationFromStrings(t *testing.T) {
 }
 
 func TestItAllowsCreationFromFloaters(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t)
 
 	price, err := model.MakePrice(currency, 1.99)

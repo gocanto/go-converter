@@ -7,6 +7,7 @@ import (
 )
 
 func TestItComputesValidMultipliers(t *testing.T) {
+	t.Parallel()
 	a := model.Currency{IsoMinorUnit: 1}
 	b := model.Currency{IsoMinorUnit: 2}
 	c := model.Currency{IsoMinorUnit: 3}
@@ -25,6 +26,7 @@ func TestItComputesValidMultipliers(t *testing.T) {
 }
 
 func TestItCanConvertItSelfToRatePrice(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t)
 	currency.Rate = 100
 
@@ -40,6 +42,7 @@ func TestItCanConvertItSelfToRatePrice(t *testing.T) {
 }
 
 func TestItHoldsBasicInfo(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t)
 
 	if currency.Code != "SGD" {

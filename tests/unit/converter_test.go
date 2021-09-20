@@ -8,6 +8,8 @@ import (
 )
 
 func TestItConvertsFromSgdToUsd(t *testing.T) {
+	t.Parallel()
+
 	//1 SGD to USD = 0.74
 	//Exchange rate = 1/0.74
 
@@ -30,6 +32,8 @@ func TestItConvertsFromSgdToUsd(t *testing.T) {
 }
 
 func TestItConvertsFromUsdToSgd(t *testing.T) {
+	t.Parallel()
+
 	//1 USD to SGD = 1.34
 	//Exchange rate = 1/1.34
 	sgd, usd := createCurrencies(t)
