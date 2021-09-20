@@ -14,6 +14,8 @@ jobs:
           go-version: ${{ matrix.go-version }}
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Copy env file
+        run: cp .env.example .env
       - name: Test
         run: go test ./tests/unit/...
 
@@ -41,5 +43,7 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
+      - name: Copy env file
+        run: cp .env.example .env
       - name: Test
         run: go test ./tests/unit/...
