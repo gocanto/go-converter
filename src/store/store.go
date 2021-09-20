@@ -3,17 +3,27 @@ package store
 import (
 	"errors"
 	"fmt"
-	lib "github.com/voyago/converter/src"
+	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/src/store/handler"
 )
 
 type Store struct {
-	Handler  handler.Handler
 	Currency string
+	Env      environment.Env
+	Handler  handler.Handler
 }
 
 func MakeStore(driver string, currency string) (*Store, error) {
-	store := &Store{Currency: currency}
+	env, err := environment.Make()
+
+	if err != nil {
+		return nil, errors.New("the store was unable to load the environment information")
+	}
+
+	store := &Store{
+		Currency: currency,
+		Env: *env,
+	}
 
 	if err := store.build(driver); err != nil {
 		return nil, err
@@ -24,9 +34,9 @@ func MakeStore(driver string, currency string) (*Store, error) {
 
 func (current *Store) build(driver string) error {
 	switch driver {
-	case "currencylayer":
+	case "currency-layer":
 		(*current).Handler = handler.CurrencyLayer{
-			ApiKey:   fmt.Sprintf("%s", lib.Env("CURRENCY_LAYER_KEY")),
+			Env: current.Env,
 			Currency: current.Currency,
 		}
 	default:
