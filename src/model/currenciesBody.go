@@ -23,7 +23,7 @@ func MakeCurrenciesBody() (CurrenciesBody, error) {
 
 func (body CurrenciesBody) GetSourcePath() string {
 	_, fileName, _, _ := runtime.Caller(0)
-	baseDir := strings.Split(fileName, "/src/store/handler/currencyLayer/mock.go")[0]
+	baseDir := strings.Split(fileName, "/src/model/currenciesBody.go")[0]
 
 	return baseDir + "/resources/currencies.json"
 }
