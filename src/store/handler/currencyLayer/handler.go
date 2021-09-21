@@ -10,10 +10,10 @@ type Handler struct {
 	Env environment.Env
 }
 
-func (current Handler) ExchangeRates() model.Currencies {
+func (current Handler) ExchangeRates() (model.Currencies, error) {
 	items := make(map[string]model.Currency)
 
-	return model.Currencies{Items: &items}
+	return model.Currencies{Items: &items}, nil
 }
 
 func (current Handler) ApiKey() string  {

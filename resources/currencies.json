@@ -1,0 +1,1076 @@
+[
+  {
+    "code": "AFN",
+    "name": "Afghani",
+    "iso_minor_unit": 2,
+    "iso_code": 971
+  },
+  {
+    "code": "EUR",
+    "name": "Euro",
+    "iso_minor_unit": 2,
+    "iso_code": 978
+  },
+  {
+    "code": "ALL",
+    "name": "Lek",
+    "iso_minor_unit": 2,
+    "iso_code": 8
+  },
+  {
+    "code": "DZD",
+    "name": "Algerian Dinar",
+    "iso_minor_unit": 2,
+    "iso_code": 12
+  },
+  {
+    "code": "USD",
+    "name": "US Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 840
+  },
+  {
+    "code": "AOA",
+    "name": "Kwanza",
+    "iso_minor_unit": 2,
+    "iso_code": 973
+  },
+  {
+    "code": "XCD",
+    "name": "East Caribbean Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 951
+  },
+  {
+    "code": "ARS",
+    "name": "Argentine Peso",
+    "iso_minor_unit": 2,
+    "iso_code": 32
+  },
+  {
+    "code": "AMD",
+    "name": "Armenian Dram",
+    "iso_minor_unit": 2,
+    "iso_code": 51
+  },
+  {
+    "code": "AWG",
+    "name": "Aruban Florin",
+    "iso_minor_unit": 2,
+    "iso_code": 533
+  },
+  {
+    "code": "AUD",
+    "name": "Australian Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 36
+  },
+  {
+    "code": "AZN",
+    "name": "Azerbaijan Manat",
+    "iso_minor_unit": 2,
+    "iso_code": 944
+  },
+  {
+    "code": "BSD",
+    "name": "Bahamian Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 44
+  },
+  {
+    "code": "BHD",
+    "name": "Bahraini Dinar",
+    "iso_minor_unit": 3,
+    "iso_code": 48
+  },
+  {
+    "code": "BDT",
+    "name": "Taka",
+    "iso_minor_unit": 2,
+    "iso_code": 50
+  },
+  {
+    "code": "BBD",
+    "name": "Barbados Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 52
+  },
+  {
+    "code": "BYN",
+    "name": "Belarusian Ruble",
+    "iso_minor_unit": 2,
+    "iso_code": 933
+  },
+  {
+    "code": "BZD",
+    "name": "Belize Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 84
+  },
+  {
+    "code": "XOF",
+    "name": "CFA Franc BCEAO",
+    "iso_minor_unit": 0,
+    "iso_code": 952
+  },
+  {
+    "code": "BMD",
+    "name": "Bermudian Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 60
+  },
+  {
+    "code": "INR",
+    "name": "Indian Rupee",
+    "iso_minor_unit": 2,
+    "iso_code": 356
+  },
+  {
+    "code": "BTN",
+    "name": "Ngultrum",
+    "iso_minor_unit": 2,
+    "iso_code": 64
+  },
+  {
+    "code": "BOB",
+    "name": "Boliviano",
+    "iso_minor_unit": 2,
+    "iso_code": 68
+  },
+  {
+    "code": "BOV",
+    "name": "Mvdol",
+    "iso_minor_unit": 2,
+    "iso_code": 984
+  },
+  {
+    "code": "BAM",
+    "name": "Convertible Mark",
+    "iso_minor_unit": 2,
+    "iso_code": 977
+  },
+  {
+    "code": "BWP",
+    "name": "Pula",
+    "iso_minor_unit": 2,
+    "iso_code": 72
+  },
+  {
+    "code": "NOK",
+    "name": "Norwegian Krone",
+    "iso_minor_unit": 2,
+    "iso_code": 578
+  },
+  {
+    "code": "BRL",
+    "name": "Brazilian Real",
+    "iso_minor_unit": 2,
+    "iso_code": 986
+  },
+  {
+    "code": "BND",
+    "name": "Brunei Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 96
+  },
+  {
+    "code": "BGN",
+    "name": "Bulgarian Lev",
+    "iso_minor_unit": 2,
+    "iso_code": 975
+  },
+  {
+    "code": "BIF",
+    "name": "Burundi Franc",
+    "iso_minor_unit": 0,
+    "iso_code": 108
+  },
+  {
+    "code": "CVE",
+    "name": "Cabo Verde Escudo",
+    "iso_minor_unit": 2,
+    "iso_code": 132
+  },
+  {
+    "code": "KHR",
+    "name": "Riel",
+    "iso_minor_unit": 2,
+    "iso_code": 116
+  },
+  {
+    "code": "XAF",
+    "name": "CFA Franc BEAC",
+    "iso_minor_unit": 0,
+    "iso_code": 950
+  },
+  {
+    "code": "CAD",
+    "name": "Canadian Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 124
+  },
+  {
+    "code": "KYD",
+    "name": "Cayman Islands Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 136
+  },
+  {
+    "code": "CLP",
+    "name": "Chilean Peso",
+    "iso_minor_unit": 0,
+    "iso_code": 152
+  },
+  {
+    "code": "CLF",
+    "name": "Unidad de Fomento",
+    "iso_minor_unit": 4,
+    "iso_code": 990
+  },
+  {
+    "code": "CNY",
+    "name": "Yuan Renminbi",
+    "iso_minor_unit": 2,
+    "iso_code": 156
+  },
+  {
+    "code": "COP",
+    "name": "Colombian Peso",
+    "iso_minor_unit": 2,
+    "iso_code": 170
+  },
+  {
+    "code": "COU",
+    "name": "Unidad de Valor Real",
+    "iso_minor_unit": 2,
+    "iso_code": 970
+  },
+  {
+    "code": "KMF",
+    "name": "Comorian Franc ",
+    "iso_minor_unit": 0,
+    "iso_code": 174
+  },
+  {
+    "code": "CDF",
+    "name": "Congolese Franc",
+    "iso_minor_unit": 2,
+    "iso_code": 976
+  },
+  {
+    "code": "NZD",
+    "name": "New Zealand Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 554
+  },
+  {
+    "code": "CRC",
+    "name": "Costa Rican Colon",
+    "iso_minor_unit": 2,
+    "iso_code": 188
+  },
+  {
+    "code": "HRK",
+    "name": "Kuna",
+    "iso_minor_unit": 2,
+    "iso_code": 191
+  },
+  {
+    "code": "CUP",
+    "name": "Cuban Peso",
+    "iso_minor_unit": 2,
+    "iso_code": 192
+  },
+  {
+    "code": "CUC",
+    "name": "Peso Convertible",
+    "iso_minor_unit": 2,
+    "iso_code": 931
+  },
+  {
+    "code": "ANG",
+    "name": "Netherlands Antillean Guilder",
+    "iso_minor_unit": 2,
+    "iso_code": 532
+  },
+  {
+    "code": "CZK",
+    "name": "Czech Koruna",
+    "iso_minor_unit": 2,
+    "iso_code": 203
+  },
+  {
+    "code": "DKK",
+    "name": "Danish Krone",
+    "iso_minor_unit": 2,
+    "iso_code": 208
+  },
+  {
+    "code": "DJF",
+    "name": "Djibouti Franc",
+    "iso_minor_unit": 0,
+    "iso_code": 262
+  },
+  {
+    "code": "DOP",
+    "name": "Dominican Peso",
+    "iso_minor_unit": 2,
+    "iso_code": 214
+  },
+  {
+    "code": "EGP",
+    "name": "Egyptian Pound",
+    "iso_minor_unit": 2,
+    "iso_code": 818
+  },
+  {
+    "code": "SVC",
+    "name": "El Salvador Colon",
+    "iso_minor_unit": 2,
+    "iso_code": 222
+  },
+  {
+    "code": "ERN",
+    "name": "Nakfa",
+    "iso_minor_unit": 2,
+    "iso_code": 232
+  },
+  {
+    "code": "ETB",
+    "name": "Ethiopian Birr",
+    "iso_minor_unit": 2,
+    "iso_code": 230
+  },
+  {
+    "code": "FKP",
+    "name": "Falkland Islands Pound",
+    "iso_minor_unit": 2,
+    "iso_code": 238
+  },
+  {
+    "code": "FJD",
+    "name": "Fiji Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 242
+  },
+  {
+    "code": "XPF",
+    "name": "CFP Franc",
+    "iso_minor_unit": 0,
+    "iso_code": 953
+  },
+  {
+    "code": "GMD",
+    "name": "Dalasi",
+    "iso_minor_unit": 2,
+    "iso_code": 270
+  },
+  {
+    "code": "GEL",
+    "name": "Lari",
+    "iso_minor_unit": 2,
+    "iso_code": 981
+  },
+  {
+    "code": "GHS",
+    "name": "Ghana Cedi",
+    "iso_minor_unit": 2,
+    "iso_code": 936
+  },
+  {
+    "code": "GIP",
+    "name": "Gibraltar Pound",
+    "iso_minor_unit": 2,
+    "iso_code": 292
+  },
+  {
+    "code": "GTQ",
+    "name": "Quetzal",
+    "iso_minor_unit": 2,
+    "iso_code": 320
+  },
+  {
+    "code": "GBP",
+    "name": "Pound Sterling",
+    "iso_minor_unit": 2,
+    "iso_code": 826
+  },
+  {
+    "code": "GNF",
+    "name": "Guinean Franc",
+    "iso_minor_unit": 0,
+    "iso_code": 324
+  },
+  {
+    "code": "GYD",
+    "name": "Guyana Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 328
+  },
+  {
+    "code": "HTG",
+    "name": "Gourde",
+    "iso_minor_unit": 2,
+    "iso_code": 332
+  },
+  {
+    "code": "HNL",
+    "name": "Lempira",
+    "iso_minor_unit": 2,
+    "iso_code": 340
+  },
+  {
+    "code": "HKD",
+    "name": "Hong Kong Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 344
+  },
+  {
+    "code": "HUF",
+    "name": "Forint",
+    "iso_minor_unit": 2,
+    "iso_code": 348
+  },
+  {
+    "code": "ISK",
+    "name": "Iceland Krona",
+    "iso_minor_unit": 0,
+    "iso_code": 352
+  },
+  {
+    "code": "IDR",
+    "name": "Rupiah",
+    "iso_minor_unit": 2,
+    "iso_code": 360
+  },
+  {
+    "code": "XDR",
+    "name": "SDR (Special Drawing Right)",
+    "iso_minor_unit": 0,
+    "iso_code": 960
+  },
+  {
+    "code": "IRR",
+    "name": "Iranian Rial",
+    "iso_minor_unit": 2,
+    "iso_code": 364
+  },
+  {
+    "code": "IQD",
+    "name": "Iraqi Dinar",
+    "iso_minor_unit": 3,
+    "iso_code": 368
+  },
+  {
+    "code": "ILS",
+    "name": "New Israeli Sheqel",
+    "iso_minor_unit": 2,
+    "iso_code": 376
+  },
+  {
+    "code": "JMD",
+    "name": "Jamaican Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 388
+  },
+  {
+    "code": "JPY",
+    "name": "Yen",
+    "iso_minor_unit": 0,
+    "iso_code": 392
+  },
+  {
+    "code": "JOD",
+    "name": "Jordanian Dinar",
+    "iso_minor_unit": 3,
+    "iso_code": 400
+  },
+  {
+    "code": "KZT",
+    "name": "Tenge",
+    "iso_minor_unit": 2,
+    "iso_code": 398
+  },
+  {
+    "code": "KES",
+    "name": "Kenyan Shilling",
+    "iso_minor_unit": 2,
+    "iso_code": 404
+  },
+  {
+    "code": "KPW",
+    "name": "North Korean Won",
+    "iso_minor_unit": 2,
+    "iso_code": 408
+  },
+  {
+    "code": "KRW",
+    "name": "Won",
+    "iso_minor_unit": 0,
+    "iso_code": 410
+  },
+  {
+    "code": "KWD",
+    "name": "Kuwaiti Dinar",
+    "iso_minor_unit": 3,
+    "iso_code": 414
+  },
+  {
+    "code": "KGS",
+    "name": "Som",
+    "iso_minor_unit": 2,
+    "iso_code": 417
+  },
+  {
+    "code": "LAK",
+    "name": "Lao Kip",
+    "iso_minor_unit": 2,
+    "iso_code": 418
+  },
+  {
+    "code": "LBP",
+    "name": "Lebanese Pound",
+    "iso_minor_unit": 2,
+    "iso_code": 422
+  },
+  {
+    "code": "LSL",
+    "name": "Loti",
+    "iso_minor_unit": 2,
+    "iso_code": 426
+  },
+  {
+    "code": "ZAR",
+    "name": "Rand",
+    "iso_minor_unit": 2,
+    "iso_code": 710
+  },
+  {
+    "code": "LRD",
+    "name": "Liberian Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 430
+  },
+  {
+    "code": "LYD",
+    "name": "Libyan Dinar",
+    "iso_minor_unit": 3,
+    "iso_code": 434
+  },
+  {
+    "code": "CHF",
+    "name": "Swiss Franc",
+    "iso_minor_unit": 2,
+    "iso_code": 756
+  },
+  {
+    "code": "MOP",
+    "name": "Pataca",
+    "iso_minor_unit": 2,
+    "iso_code": 446
+  },
+  {
+    "code": "MKD",
+    "name": "Denar",
+    "iso_minor_unit": 2,
+    "iso_code": 807
+  },
+  {
+    "code": "MGA",
+    "name": "Malagasy Ariary",
+    "iso_minor_unit": 2,
+    "iso_code": 969
+  },
+  {
+    "code": "MWK",
+    "name": "Malawi Kwacha",
+    "iso_minor_unit": 2,
+    "iso_code": 454
+  },
+  {
+    "code": "MYR",
+    "name": "Malaysian Ringgit",
+    "iso_minor_unit": 2,
+    "iso_code": 458
+  },
+  {
+    "code": "MVR",
+    "name": "Rufiyaa",
+    "iso_minor_unit": 2,
+    "iso_code": 462
+  },
+  {
+    "code": "MRU",
+    "name": "Ouguiya",
+    "iso_minor_unit": 2,
+    "iso_code": 929
+  },
+  {
+    "code": "MUR",
+    "name": "Mauritius Rupee",
+    "iso_minor_unit": 2,
+    "iso_code": 480
+  },
+  {
+    "code": "XUA",
+    "name": "ADB Unit of Account",
+    "iso_minor_unit": 0,
+    "iso_code": 965
+  },
+  {
+    "code": "MXN",
+    "name": "Mexican Peso",
+    "iso_minor_unit": 2,
+    "iso_code": 484
+  },
+  {
+    "code": "MXV",
+    "name": "Mexican Unidad de Inversion (UDI)",
+    "iso_minor_unit": 2,
+    "iso_code": 979
+  },
+  {
+    "code": "MDL",
+    "name": "Moldovan Leu",
+    "iso_minor_unit": 2,
+    "iso_code": 498
+  },
+  {
+    "code": "MNT",
+    "name": "Tugrik",
+    "iso_minor_unit": 2,
+    "iso_code": 496
+  },
+  {
+    "code": "MAD",
+    "name": "Moroccan Dirham",
+    "iso_minor_unit": 2,
+    "iso_code": 504
+  },
+  {
+    "code": "MZN",
+    "name": "Mozambique Metical",
+    "iso_minor_unit": 2,
+    "iso_code": 943
+  },
+  {
+    "code": "MMK",
+    "name": "Kyat",
+    "iso_minor_unit": 2,
+    "iso_code": 104
+  },
+  {
+    "code": "NAD",
+    "name": "Namibia Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 516
+  },
+  {
+    "code": "NPR",
+    "name": "Nepalese Rupee",
+    "iso_minor_unit": 2,
+    "iso_code": 524
+  },
+  {
+    "code": "NIO",
+    "name": "Cordoba Oro",
+    "iso_minor_unit": 2,
+    "iso_code": 558
+  },
+  {
+    "code": "NGN",
+    "name": "Naira",
+    "iso_minor_unit": 2,
+    "iso_code": 566
+  },
+  {
+    "code": "OMR",
+    "name": "Rial Omani",
+    "iso_minor_unit": 3,
+    "iso_code": 512
+  },
+  {
+    "code": "PKR",
+    "name": "Pakistan Rupee",
+    "iso_minor_unit": 2,
+    "iso_code": 586
+  },
+  {
+    "code": "PAB",
+    "name": "Balboa",
+    "iso_minor_unit": 2,
+    "iso_code": 590
+  },
+  {
+    "code": "PGK",
+    "name": "Kina",
+    "iso_minor_unit": 2,
+    "iso_code": 598
+  },
+  {
+    "code": "PYG",
+    "name": "Guarani",
+    "iso_minor_unit": 0,
+    "iso_code": 600
+  },
+  {
+    "code": "PEN",
+    "name": "Sol",
+    "iso_minor_unit": 2,
+    "iso_code": 604
+  },
+  {
+    "code": "PHP",
+    "name": "Philippine Peso",
+    "iso_minor_unit": 2,
+    "iso_code": 608
+  },
+  {
+    "code": "PLN",
+    "name": "Zloty",
+    "iso_minor_unit": 2,
+    "iso_code": 985
+  },
+  {
+    "code": "QAR",
+    "name": "Qatari Rial",
+    "iso_minor_unit": 2,
+    "iso_code": 634
+  },
+  {
+    "code": "RON",
+    "name": "Romanian Leu",
+    "iso_minor_unit": 2,
+    "iso_code": 946
+  },
+  {
+    "code": "RUB",
+    "name": "Russian Ruble",
+    "iso_minor_unit": 2,
+    "iso_code": 643
+  },
+  {
+    "code": "RWF",
+    "name": "Rwanda Franc",
+    "iso_minor_unit": 0,
+    "iso_code": 646
+  },
+  {
+    "code": "SHP",
+    "name": "Saint Helena Pound",
+    "iso_minor_unit": 2,
+    "iso_code": 654
+  },
+  {
+    "code": "WST",
+    "name": "Tala",
+    "iso_minor_unit": 2,
+    "iso_code": 882
+  },
+  {
+    "code": "STN",
+    "name": "Dobra",
+    "iso_minor_unit": 2,
+    "iso_code": 930
+  },
+  {
+    "code": "SAR",
+    "name": "Saudi Riyal",
+    "iso_minor_unit": 2,
+    "iso_code": 682
+  },
+  {
+    "code": "RSD",
+    "name": "Serbian Dinar",
+    "iso_minor_unit": 2,
+    "iso_code": 941
+  },
+  {
+    "code": "SCR",
+    "name": "Seychelles Rupee",
+    "iso_minor_unit": 2,
+    "iso_code": 690
+  },
+  {
+    "code": "SLL",
+    "name": "Leone",
+    "iso_minor_unit": 2,
+    "iso_code": 694
+  },
+  {
+    "code": "SGD",
+    "name": "Singapore Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 702
+  },
+  {
+    "code": "XSU",
+    "name": "Sucre",
+    "iso_minor_unit": 0,
+    "iso_code": 994
+  },
+  {
+    "code": "SBD",
+    "name": "Solomon Islands Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 90
+  },
+  {
+    "code": "SOS",
+    "name": "Somali Shilling",
+    "iso_minor_unit": 2,
+    "iso_code": 706
+  },
+  {
+    "code": "SSP",
+    "name": "South Sudanese Pound",
+    "iso_minor_unit": 2,
+    "iso_code": 728
+  },
+  {
+    "code": "LKR",
+    "name": "Sri Lanka Rupee",
+    "iso_minor_unit": 2,
+    "iso_code": 144
+  },
+  {
+    "code": "SDG",
+    "name": "Sudanese Pound",
+    "iso_minor_unit": 2,
+    "iso_code": 938
+  },
+  {
+    "code": "SRD",
+    "name": "Surinam Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 968
+  },
+  {
+    "code": "SZL",
+    "name": "Lilangeni",
+    "iso_minor_unit": 2,
+    "iso_code": 748
+  },
+  {
+    "code": "SEK",
+    "name": "Swedish Krona",
+    "iso_minor_unit": 2,
+    "iso_code": 752
+  },
+  {
+    "code": "CHE",
+    "name": "WIR Euro",
+    "iso_minor_unit": 2,
+    "iso_code": 947
+  },
+  {
+    "code": "CHW",
+    "name": "WIR Franc",
+    "iso_minor_unit": 2,
+    "iso_code": 948
+  },
+  {
+    "code": "SYP",
+    "name": "Syrian Pound",
+    "iso_minor_unit": 2,
+    "iso_code": 760
+  },
+  {
+    "code": "TWD",
+    "name": "New Taiwan Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 901
+  },
+  {
+    "code": "TJS",
+    "name": "Somoni",
+    "iso_minor_unit": 2,
+    "iso_code": 972
+  },
+  {
+    "code": "TZS",
+    "name": "Tanzanian Shilling",
+    "iso_minor_unit": 2,
+    "iso_code": 834
+  },
+  {
+    "code": "THB",
+    "name": "Baht",
+    "iso_minor_unit": 2,
+    "iso_code": 764
+  },
+  {
+    "code": "TOP",
+    "name": "Paanga",
+    "iso_minor_unit": 2,
+    "iso_code": 776
+  },
+  {
+    "code": "TTD",
+    "name": "Trinidad and Tobago Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 780
+  },
+  {
+    "code": "TND",
+    "name": "Tunisian Dinar",
+    "iso_minor_unit": 3,
+    "iso_code": 788
+  },
+  {
+    "code": "TRY",
+    "name": "Turkish Lira",
+    "iso_minor_unit": 2,
+    "iso_code": 949
+  },
+  {
+    "code": "TMT",
+    "name": "Turkmenistan New Manat",
+    "iso_minor_unit": 2,
+    "iso_code": 934
+  },
+  {
+    "code": "UGX",
+    "name": "Uganda Shilling",
+    "iso_minor_unit": 0,
+    "iso_code": 800
+  },
+  {
+    "code": "UAH",
+    "name": "Hryvnia",
+    "iso_minor_unit": 2,
+    "iso_code": 980
+  },
+  {
+    "code": "AED",
+    "name": "UAE Dirham",
+    "iso_minor_unit": 2,
+    "iso_code": 784
+  },
+  {
+    "code": "USN",
+    "name": "US Dollar (Next day)",
+    "iso_minor_unit": 2,
+    "iso_code": 997
+  },
+  {
+    "code": "UYU",
+    "name": "Peso Uruguayo",
+    "iso_minor_unit": 2,
+    "iso_code": 858
+  },
+  {
+    "code": "UYI",
+    "name": "Uruguay Peso en Unidades Indexadas (UI)",
+    "iso_minor_unit": 0,
+    "iso_code": 940
+  },
+  {
+    "code": "UYW",
+    "name": "Unidad Previsional",
+    "iso_minor_unit": 4,
+    "iso_code": 927
+  },
+  {
+    "code": "UZS",
+    "name": "Uzbekistan Sum",
+    "iso_minor_unit": 2,
+    "iso_code": 860
+  },
+  {
+    "code": "VUV",
+    "name": "Vatu",
+    "iso_minor_unit": 0,
+    "iso_code": 548
+  },
+  {
+    "code": "VES",
+    "name": "Bolvar Soberano",
+    "iso_minor_unit": 2,
+    "iso_code": 928
+  },
+  {
+    "code": "VND",
+    "name": "Dong",
+    "iso_minor_unit": 0,
+    "iso_code": 704
+  },
+  {
+    "code": "YER",
+    "name": "Yemeni Rial",
+    "iso_minor_unit": 2,
+    "iso_code": 886
+  },
+  {
+    "code": "ZMW",
+    "name": "Zambian Kwacha",
+    "iso_minor_unit": 2,
+    "iso_code": 967
+  },
+  {
+    "code": "ZWL",
+    "name": "Zimbabwe Dollar",
+    "iso_minor_unit": 2,
+    "iso_code": 932
+  },
+  {
+    "code": "XBA",
+    "name": "Bond Markets Unit European Composite Unit (EURCO)",
+    "iso_minor_unit": 0,
+    "iso_code": 955
+  },
+  {
+    "code": "XBB",
+    "name": "Bond Markets Unit European Monetary Unit (E.M.U.-6)",
+    "iso_minor_unit": 0,
+    "iso_code": 956
+  },
+  {
+    "code": "XBC",
+    "name": "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)",
+    "iso_minor_unit": 0,
+    "iso_code": 957
+  },
+  {
+    "code": "XBD",
+    "name": "Bond Markets Unit European Unit of Account 17 (E.U.A.-17)",
+    "iso_minor_unit": 0,
+    "iso_code": 958
+  },
+  {
+    "code": "XTS",
+    "name": "Codes specifically reserved for testing purposes",
+    "iso_minor_unit": 0,
+    "iso_code": 963
+  },
+  {
+    "code": "XXX",
+    "name": "The codes assigned for transactions where no currency is involved",
+    "iso_minor_unit": 0,
+    "iso_code": 999
+  },
+  {
+    "code": "XAU",
+    "name": "Gold",
+    "iso_minor_unit": 0,
+    "iso_code": 959
+  },
+  {
+    "code": "XPD",
+    "name": "Palladium",
+    "iso_minor_unit": 0,
+    "iso_code": 964
+  },
+  {
+    "code": "XPT",
+    "name": "Platinum",
+    "iso_minor_unit": 0,
+    "iso_code": 962
+  },
+  {
+    "code": "XAG",
+    "name": "Silver",
+    "iso_minor_unit": 0,
+    "iso_code": 961
+  }
+]
