@@ -13,7 +13,7 @@ type Store struct {
 	Handler  handler.Handler
 }
 
-func MakeStore(driver string, currency string) (*Store, error) {
+func Make(driver string, currency string) (*Store, error) {
 	env, err := environment.Make()
 
 	if err != nil {

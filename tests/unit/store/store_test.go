@@ -9,7 +9,7 @@ import (
 func TestItReturnsNilForInvalidDrivers(t *testing.T) {
 	t.Parallel()
 
-	if manager, err := store.MakeStore("foo", "bar"); manager != nil {
+	if manager, err := store.Make("foo", "bar"); manager != nil {
 		t.Errorf("%v", err)
 	}
 }
@@ -23,7 +23,7 @@ func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 		t.Errorf("%v", err)
 	}
 
-	if !manager.Env.IsTest() {
+	if manager.Env.IsLive() {
 		t.Errorf("The given store environment is invalid.")
 	}
 
