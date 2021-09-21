@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/src/store/handler"
+	"github.com/voyago/converter/src/store/handler/currencyLayer"
 )
 
 type Store struct {
@@ -36,10 +37,7 @@ func Mock(driver string, currency string) (*Store, error) {
 func (current *Store) build(driver string) error {
 	switch driver {
 	case "currency-layer":
-		(*current).Handler = handler.CurrencyLayer{
-			Env: current.Env,
-			Currency: current.Currency,
-		}
+		(*current).Handler = current.CurrencyLayerHandler()
 	default:
 		return errors.New(fmt.Sprintf("The given driver [%s] is invalid", driver))
 	}
@@ -58,4 +56,12 @@ func resolve(env *environment.Env, driver string, currency string) (*Store, erro
 	}
 
 	return store, nil
+}
+
+func (current Store) CurrencyLayerHandler() handler.Handler {
+	if current.Env.IsLive() {
+		return currencyLayer.Handler{Currency: current.Currency, Env: current.Env}
+	}
+
+	return currencyLayer.Mock{Currency: current.Currency, Env: current.Env}
 }
