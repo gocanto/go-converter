@@ -17,7 +17,7 @@ func TestItLoadsTheLiveEnv(t *testing.T) {
 		t.Errorf("The given env is invalid")
 	}
 
-	if env.Get("CONVERTER_ENV") != "testing" {
+	if env.Get("CONVERTER_ENV") != "local" {
 		t.Errorf("The given key [CONVERTER_ENV] is invalid")
 	}
 }
@@ -34,7 +34,7 @@ func TestItCanLoadDifferentFiles(t *testing.T) {
 		t.Errorf("The given env is invalid")
 	}
 
-	if env.Get("CONVERTER_ENV") != "testing" {
+	if env.Get("CONVERTER_ENV") != "local" {
 		t.Errorf("The given key [CONVERTER_ENV] is invalid")
 	}
 
