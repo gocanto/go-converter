@@ -13,13 +13,13 @@ func ParseJson(file string, target interface{}) error {
 		return err
 	}
 
-	byteValue, err := ioutil.ReadAll(content)
+	response, err := ioutil.ReadAll(content)
 
 	if err != nil {
 		return err
 	}
 
-	if err = json.Unmarshal(byteValue, &target); err != nil {
+	if err = json.Unmarshal(response, &target); err != nil {
 		return err
 	}
 
