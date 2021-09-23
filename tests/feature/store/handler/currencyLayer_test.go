@@ -7,6 +7,8 @@ import (
 )
 
 func TestItProperlyFetchesTheRatesFromTheAPI(t *testing.T) {
+	t.Parallel()
+
 	t.Skipf("The [currency layer] feature test was skipped")
 	t.SkipNow()
 

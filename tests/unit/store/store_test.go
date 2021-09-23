@@ -14,6 +14,21 @@ func TestItReturnsNilForInvalidDrivers(t *testing.T) {
 	}
 }
 
+func TestItExposesExchangesRates(t *testing.T) {
+	t.Parallel()
+
+	manager, err := store.Mock("currency-layer", "SGD")
+
+	if err != nil {
+		t.Errorf("%v", err)
+		t.FailNow()
+	}
+
+	if rates, err := manager.ExchangeRates(); rates.Count() != 179 || err != nil {
+		t.Errorf("The [currency layer - mock] store exaches rates are invalid")
+	}
+}
+
 func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 	t.Parallel()
 

@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/voyago/converter/environment"
+	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/pkg/store/handler"
 	"github.com/voyago/converter/pkg/store/handler/currencyLayer"
 )
@@ -32,6 +33,10 @@ func Mock(driver string, currency string) (*Store, error) {
 	}
 
 	return resolve(env, driver, currency)
+}
+
+func (current Store) ExchangeRates() (model.Currencies, error)  {
+	return current.Handler.ExchangeRates()
 }
 
 func (current *Store) build(driver string) error {

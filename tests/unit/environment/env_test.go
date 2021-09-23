@@ -6,6 +6,8 @@ import (
 )
 
 func TestItLoadsTheLiveEnv(t *testing.T) {
+	t.Parallel()
+
 	env, err := environment.Make()
 
 	if err != nil {
@@ -23,6 +25,8 @@ func TestItLoadsTheLiveEnv(t *testing.T) {
 }
 
 func TestItCanLoadDifferentFiles(t *testing.T) {
+	t.Parallel()
+
 	env, err := environment.MakeWith("testing")
 
 	if err != nil {

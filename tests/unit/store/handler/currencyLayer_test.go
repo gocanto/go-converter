@@ -7,6 +7,8 @@ import (
 )
 
 func TestItProperlyFindsRates(t *testing.T) {
+	t.Parallel()
+
 	env, err := environment.MakeWith("testing")
 
 	if err != nil {

@@ -1,7 +1,6 @@
 package blueprint
 
 import (
-	"fmt"
 	"github.com/voyago/converter/pkg/support"
 	"runtime"
 	"strings"
@@ -25,8 +24,6 @@ func MakeCurrenciesBlueprint() (Blueprint, error) {
 func (body Blueprint) SourcePath() string {
 	_, fileName, _, _ := runtime.Caller(0)
 	baseDir := strings.Split(fileName, "/pkg/store/blueprint/currencies.go")[0]
-
-	fmt.Println("===============>", baseDir)
 
 	return baseDir + "/resources/currencies.json"
 }
