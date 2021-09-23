@@ -6,15 +6,18 @@ import (
 	"testing"
 )
 
-func TestItProperlyFindsRates(t *testing.T) {
-	env, err := environment.MakeWith("testing")
+func TestItProperlyFetchesTheRatesFromTheAPI(t *testing.T) {
+	t.Skipf("The [currency layer] feature test was skipped")
+	t.SkipNow()
+
+	env, err := environment.Make()
 
 	if err != nil {
 		t.Errorf("%v", err)
 		t.FailNow()
 	}
 
-	driver := currencyLayer.Mock{Source: "USD", Env: *env}
+	driver := currencyLayer.Handler{Source: "SGD", Env: *env}
 
 	rates, err := driver.ExchangeRates()
 
@@ -29,7 +32,7 @@ func TestItProperlyFindsRates(t *testing.T) {
 		t.Errorf("The given currency code [%s] is invalid", currency.Code)
 	}
 
-	if currency.Rate != 1.34258 {
+	if currency.Rate > 1 {
 		t.Errorf("The given currency [%s] rate [%v] is invalid", currency.Code, currency.Rate)
 	}
 }

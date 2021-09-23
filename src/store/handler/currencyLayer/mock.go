@@ -11,14 +11,14 @@ import (
 )
 
 type Mock struct {
-	Currency string
-	Env environment.Env
+	Source string
+	Env    environment.Env
 	Response Response
 }
 
 func (current Mock) ExchangeRates() (model.Currencies, error) {
 	collection := model.MakeCurrencies()
-	currenciesBody, err := blueprint.MakeCurrenciesBlueprint()
+	currenciesBlueprint, err := blueprint.MakeCurrenciesBlueprint()
 
 	if err != nil {
 		return collection, err
@@ -28,7 +28,7 @@ func (current Mock) ExchangeRates() (model.Currencies, error) {
 		return collection, err
 	}
 
-	for _, value := range currenciesBody.Items() {
+	for _, value := range currenciesBlueprint.Items() {
 		code := fmt.Sprintf("%s", value["code"])
 
 		collection.Add(model.Currency{

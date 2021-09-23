@@ -37,7 +37,7 @@ func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 			t.Errorf("The given key is invalid, %s", value.ApiKey())
 		}
 
-		if value.Currency != "SGD" {
+		if value.Source != "SGD" {
 			t.Errorf("The given currency is invalid")
 		}
 	default:

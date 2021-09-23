@@ -60,8 +60,8 @@ func resolve(env *environment.Env, driver string, currency string) (*Store, erro
 
 func (current Store) CurrencyLayerHandler() handler.Handler {
 	if current.Env.IsLive() {
-		return currencyLayer.Handler{Currency: current.Currency, Env: current.Env}
+		return currencyLayer.Handler{Source: current.Currency, Env: current.Env}
 	}
 
-	return currencyLayer.Mock{Currency: current.Currency, Env: current.Env}
+	return currencyLayer.Mock{Source: current.Currency, Env: current.Env}
 }

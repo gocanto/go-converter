@@ -45,9 +45,6 @@ func TestItHoldsBasicInfo(t *testing.T) {
 	t.Parallel()
 	currency := mock.Currency(t)
 
-	//var foo int16
-	//foo = 10000
-
 	if currency.Code != "SGD" {
 		t.Errorf("Currency code [%s] is invalid", currency.Code)
 	}
