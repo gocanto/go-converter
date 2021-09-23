@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/voyago/converter/environment"
-	"github.com/voyago/converter/src/store/handler"
-	"github.com/voyago/converter/src/store/handler/currencyLayer"
+	"github.com/voyago/converter/pkg/store/handler"
+	"github.com/voyago/converter/pkg/store/handler/currencyLayer"
 )
 
 type Store struct {

@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/voyago/converter/environment"
-	"github.com/voyago/converter/src/store/handler/currencyLayer"
+	"github.com/voyago/converter/pkg/store/handler/currencyLayer"
 	"testing"
 )
 

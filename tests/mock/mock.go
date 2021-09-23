@@ -1,8 +1,8 @@
 package mock
 
 import (
-	"github.com/voyago/converter/src/model"
-	"github.com/voyago/converter/src/support"
+	"github.com/voyago/converter/pkg/model"
+	"github.com/voyago/converter/pkg/support"
 	"runtime"
 	"strings"
 	"testing"

@@ -3,9 +3,9 @@ package currencyLayer
 import (
 	"fmt"
 	"github.com/voyago/converter/environment"
-	"github.com/voyago/converter/src/model"
-	"github.com/voyago/converter/src/store/blueprint"
-	"github.com/voyago/converter/src/support"
+	"github.com/voyago/converter/pkg/model"
+	"github.com/voyago/converter/pkg/store/blueprint"
+	"github.com/voyago/converter/pkg/support"
 	"runtime"
 	"strings"
 )
@@ -50,7 +50,7 @@ func (current Mock) ApiKey() string  {
 func (current *Mock) FetchRates() error {
 	_, fileName, _, _ := runtime.Caller(0)
 
-	dir := strings.Split(fileName, "/src/store/handler/currencyLayer/mock.go")[0]
+	dir := strings.Split(fileName, "/pkg/store/handler/currencyLayer/mock.go")[0]
 	payload := dir + "/resources/currency_layer_live_response.json"
 
 	if err := support.ParseJson(payload, &current.Response); err != nil {

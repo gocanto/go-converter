@@ -1,8 +1,8 @@
 package store
 
 import (
-	"github.com/voyago/converter/src/store"
-	"github.com/voyago/converter/src/store/handler/currencyLayer"
+	"github.com/voyago/converter/pkg/store"
+	"github.com/voyago/converter/pkg/store/handler/currencyLayer"
 	"testing"
 )
 

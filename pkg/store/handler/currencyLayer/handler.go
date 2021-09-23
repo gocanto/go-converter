@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/voyago/converter/environment"
-	"github.com/voyago/converter/src/model"
-	"github.com/voyago/converter/src/store/blueprint"
+	"github.com/voyago/converter/pkg/model"
+	"github.com/voyago/converter/pkg/store/blueprint"
 	"io"
 	"net/http"
 )

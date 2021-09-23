@@ -1,7 +1,7 @@
 package conversion
 
 import (
-	"github.com/voyago/converter/src/model"
+	"github.com/voyago/converter/pkg/model"
 )
 
 func Convert(price model.Price, currency model.Currency) (model.Price, error)  {

@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/voyago/converter/src/support"
+	"github.com/voyago/converter/pkg/support"
 )
 
 type Currency struct {

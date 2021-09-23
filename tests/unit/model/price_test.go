@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/voyago/converter/src/model"
+	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/tests/mock"
 	"testing"
 )
