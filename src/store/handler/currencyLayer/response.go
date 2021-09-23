@@ -7,7 +7,7 @@ type Response struct {
 	Quotes map[string]float64 `json:"quotes"`
 }
 
-func (current Response) FindRateFor(currency string) float64 {
+func (current Response) RateFor(currency string) float64 {
 	for index, value := range current.Quotes {
 		if index[3:] == currency {
 			return value

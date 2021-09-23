@@ -23,9 +23,7 @@ func (current Mock) ExchangeRates() (model.Currencies, error) {
 		return collection, err
 	}
 
-	response, err := fetchRates()
-
-	if err != nil {
+	if err := current.FetchRates(); err != nil {
 		return collection, err
 	}
 
@@ -38,7 +36,7 @@ func (current Mock) ExchangeRates() (model.Currencies, error) {
 			IsoMinorUnit: int(value["iso_minor_unit"].(float64)),
 			IsoCode: int(value["iso_code"].(float64)),
 			Symbol: "",
-			Rate: float32(response.FindRateFor(code)),
+			Rate: float32(current.Response.RateFor(code)),
 		})
 	}
 
@@ -46,19 +44,18 @@ func (current Mock) ExchangeRates() (model.Currencies, error) {
 }
 
 func (current Mock) ApiKey() string  {
-	return current.Env.Get("CONVERTER_CURRENCY_LAYER_KEY")
+	return ""
 }
 
-func fetchRates() (Response, error) {
+func (current *Mock) FetchRates() error {
 	_, fileName, _, _ := runtime.Caller(0)
 
-	baseDir := strings.Split(fileName, "/src/store/handler/currencyLayer/mock.go")[0]
-	stubPath := baseDir + "/resources/currency_layer_live_response.json"
+	dir := strings.Split(fileName, "/src/store/handler/currencyLayer/mock.go")[0]
+	payload := dir + "/resources/currency_layer_live_response.json"
 
-	response := Response{}
-	if err := support.ParseJson(stubPath, &response); err != nil {
-		return Response{}, err
+	if err := support.ParseJson(payload, &current.Response); err != nil {
+		return err
 	}
 
-	return response, nil
+	return nil
 }
