@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/src/model"
+	"github.com/voyago/converter/src/store/blueprint"
 	"github.com/voyago/converter/src/support"
 	"runtime"
 	"strings"
@@ -17,7 +18,7 @@ type Mock struct {
 
 func (current Mock) ExchangeRates() (model.Currencies, error) {
 	collection := model.MakeCurrencies()
-	currenciesBody, err := model.MakeCurrenciesBody()
+	currenciesBody, err := blueprint.MakeCurrenciesBlueprint()
 
 	if err != nil {
 		return collection, err
