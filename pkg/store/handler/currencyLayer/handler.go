@@ -10,6 +10,8 @@ import (
 	"net/http"
 )
 
+const ApiEndpoint = "http://api.currencylayer.com/live"
+
 type Handler struct {
 	Source string
 	Env    environment.Env
@@ -76,7 +78,7 @@ func (current *Handler) parseResponse(response *http.Response) error {
 }
 
 func (current Handler) BaseUrl() string  {
-	return "http://api.currencylayer.com/live?access_key=" + current.ApiKey() + "&source=" + current.Source
+	return ApiEndpoint + "?access_key=" + current.ApiKey() + "&source=" + current.Source
 }
 
 func (current Handler) ApiKey() string  {
