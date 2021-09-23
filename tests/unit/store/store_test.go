@@ -42,7 +42,7 @@ func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 		t.Errorf("The given store environment is invalid.")
 	}
 
-	if manager.Currency != "SGD" {
+	if manager.Source != "SGD" {
 		t.Errorf("The given store base currency is invalid")
 	}
 

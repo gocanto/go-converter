@@ -10,8 +10,8 @@ import (
 )
 
 type Store struct {
-	Currency string
-	Env      environment.Env
+	Source string
+	Env    environment.Env
 	Handler  handler.Handler
 }
 
@@ -52,8 +52,8 @@ func (current *Store) build(driver string) error {
 
 func resolve(env *environment.Env, driver string, currency string) (*Store, error) {
 	store := &Store{
-		Currency: currency,
-		Env: *env,
+		Source: currency,
+		Env:    *env,
 	}
 
 	if err := store.build(driver); err != nil {
@@ -65,8 +65,8 @@ func resolve(env *environment.Env, driver string, currency string) (*Store, erro
 
 func (current Store) currencyLayerHandler() handler.Handler {
 	if current.Env.IsLive() {
-		return currencyLayer.Handler{Source: current.Currency, Env: current.Env}
+		return currencyLayer.Handler{Source: current.Source, Env: current.Env}
 	}
 
-	return currencyLayer.Mock{Source: current.Currency, Env: current.Env}
+	return currencyLayer.Mock{Source: current.Source, Env: current.Env}
 }
