@@ -8,8 +8,8 @@ type Currency struct {
 	Code         string  `json:"code"`
 	Name         string  `json:"name"`
 	Rate         float32 `json:"rate"`
-	IsoCode      int     `json:"iso_code"`
-	IsoMinorUnit int     `json:"iso_minor_unit"`
+	IsoCode      int16     `json:"iso_code"`
+	IsoMinorUnit int8     `json:"iso_minor_unit"`
 }
 
 func (current Currency) Multiplier() int64  {

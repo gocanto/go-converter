@@ -9,8 +9,10 @@ type Strings struct {
 	Value string
 }
 
-func (current *Strings) RightPad(padStr string, times int) {
-	padCountInt := 1 + ((times - len(padStr)) / len(padStr))
+func (current *Strings) RightPad(padStr string, times int8) {
+	base := int(times)
+
+	padCountInt := 1 + ((base - len(padStr)) / len(padStr))
 
 	(*current).Value = current.Value + strings.Repeat(padStr, padCountInt)
 }
