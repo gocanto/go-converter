@@ -1,6 +1,7 @@
 package conversion
 
 import (
+	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/pkg/conversion"
 	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/tests/mock"
@@ -10,13 +11,15 @@ import (
 func TestItConvertsFromSgdToUsd(t *testing.T) {
 	t.Parallel()
 
+	env, _ := environment.MakeWith("testing")
+	converter := conversion.MakeConverter(*env)
+
 	//1 SGD to USD = 0.74
 	//Exchange rate = 1/0.74
-
 	sgd, usd := createCurrencies(t)
 
 	price, _ := model.MakePrice(sgd, 1)
-	result, err := conversion.Convert(price, usd)
+	result, err := converter.Convert(price, usd)
 
 	if err != nil {
 		t.Errorf("%v", err)
@@ -34,6 +37,9 @@ func TestItConvertsFromSgdToUsd(t *testing.T) {
 func TestItConvertsFromUsdToSgd(t *testing.T) {
 	t.Parallel()
 
+	env, _ := environment.MakeWith("testing")
+	converter := conversion.MakeConverter(*env)
+
 	//1 USD to SGD = 1.34
 	//Exchange rate = 1/1.34
 	sgd, usd := createCurrencies(t)
@@ -41,7 +47,7 @@ func TestItConvertsFromUsdToSgd(t *testing.T) {
 	sgd.Rate = 0.7462
 
 	price, _ := model.MakePrice(usd, 1)
-	result, err := conversion.Convert(price, sgd)
+	result, err := converter.Convert(price, sgd)
 
 	if err != nil {
 		t.Errorf("%v", err)

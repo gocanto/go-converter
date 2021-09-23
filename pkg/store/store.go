@@ -37,7 +37,7 @@ func Mock(driver string, currency string) (*Store, error) {
 func (current *Store) build(driver string) error {
 	switch driver {
 	case "currency-layer":
-		(*current).Handler = current.CurrencyLayerHandler()
+		(*current).Handler = current.currencyLayerHandler()
 	default:
 		return errors.New(fmt.Sprintf("The given driver [%s] is invalid", driver))
 	}
@@ -58,7 +58,7 @@ func resolve(env *environment.Env, driver string, currency string) (*Store, erro
 	return store, nil
 }
 
-func (current Store) CurrencyLayerHandler() handler.Handler {
+func (current Store) currencyLayerHandler() handler.Handler {
 	if current.Env.IsLive() {
 		return currencyLayer.Handler{Source: current.Currency, Env: current.Env}
 	}
