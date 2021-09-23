@@ -17,7 +17,7 @@ func TestItAllowsForBasicFormatting(t *testing.T) {
 		t.FailNow()
 	}
 
-	if price.ToString() != "$ 0.99" {
+	if price.ToString() != "SGD 0.99" {
 		t.Error("The given price formatting is invalid")
 	}
 }

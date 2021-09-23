@@ -35,7 +35,6 @@ func (current Mock) ExchangeRates() (model.Currencies, error) {
 			Name: fmt.Sprintf("%s", value["name"]),
 			IsoMinorUnit: int(value["iso_minor_unit"].(float64)),
 			IsoCode: int(value["iso_code"].(float64)),
-			Symbol: "",
 			Rate: float32(current.Response.RateFor(code)),
 		})
 	}

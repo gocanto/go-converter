@@ -19,7 +19,7 @@ func (current Price) ToFloat() float64  {
 }
 
 func (current Price) ToString() string {
-	return fmt.Sprintf("%s %.2f", current.Currency.Symbol, current.ToFloat())
+	return fmt.Sprintf("%s %.2f", current.Currency.Code, current.ToFloat())
 }
 
 func MakePrice(currency Currency, abstract interface{}) (Price, error)  {

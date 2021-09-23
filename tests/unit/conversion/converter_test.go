@@ -26,7 +26,7 @@ func TestItConvertsFromSgdToUsd(t *testing.T) {
 		t.Errorf("The given [SGD to USD] conversion is invalid")
 	}
 
-	if result.ToString() != "$ 0.74" {
+	if result.ToString() != "USD 0.74" {
 		t.Errorf("The given [SGD to USD] format is invalid")
 	}
 }
@@ -51,7 +51,7 @@ func TestItConvertsFromUsdToSgd(t *testing.T) {
 		t.Errorf("The given [USD to SGD] conversion is invalid")
 	}
 
-	if result.ToString() != "$ 1.35" {
+	if result.ToString() != "SGD 1.35" {
 		t.Errorf("The given [USD to SGD] format is invalid")
 	}
 }
