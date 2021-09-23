@@ -1,19 +1,35 @@
 package conversion
 
 import (
-	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/pkg/model"
+	"github.com/voyago/converter/pkg/store"
 )
 
 type Converter struct {
-	Env environment.Env
+	Store store.Store
 }
 
-func MakeConverter(env environment.Env) Converter {
-	return Converter{Env: env}
+func Make(store store.Store) Converter {
+	return Converter{Store: store}
 }
 
-func (current Converter) Convert(price model.Price, currency model.Currency) (model.Price, error) {
+func (current Converter) Convert(price model.Price) (model.Price, error)  {
+	rates, err := current.Store.ExchangeRates()
+
+	if err != nil {
+		return model.Price{}, err
+	}
+
+	currency, err := rates.Find(current.Store.Currency)
+
+	if err != nil {
+		return model.Price{}, err
+	}
+
+	return ConvertTo(price, currency)
+}
+
+func ConvertTo(price model.Price, currency model.Currency) (model.Price, error) {
 	rate, err := currency.ToRatePrice()
 
 	if err != nil {

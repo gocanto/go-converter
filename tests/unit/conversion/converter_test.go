@@ -1,9 +1,9 @@
 package conversion
 
 import (
-	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/pkg/conversion"
 	"github.com/voyago/converter/pkg/model"
+	"github.com/voyago/converter/pkg/store"
 	"github.com/voyago/converter/tests/mock"
 	"testing"
 )
@@ -11,15 +11,12 @@ import (
 func TestItConvertsFromSgdToUsd(t *testing.T) {
 	t.Parallel()
 
-	env, _ := environment.MakeWith("testing")
-	converter := conversion.MakeConverter(*env)
-
 	//1 SGD to USD = 0.74
 	//Exchange rate = 1/0.74
 	sgd, usd := createCurrencies(t)
 
 	price, _ := model.MakePrice(sgd, 1)
-	result, err := converter.Convert(price, usd)
+	result, err := conversion.ConvertTo(price, usd)
 
 	if err != nil {
 		t.Errorf("%v", err)
@@ -37,9 +34,6 @@ func TestItConvertsFromSgdToUsd(t *testing.T) {
 func TestItConvertsFromUsdToSgd(t *testing.T) {
 	t.Parallel()
 
-	env, _ := environment.MakeWith("testing")
-	converter := conversion.MakeConverter(*env)
-
 	//1 USD to SGD = 1.34
 	//Exchange rate = 1/1.34
 	sgd, usd := createCurrencies(t)
@@ -47,7 +41,7 @@ func TestItConvertsFromUsdToSgd(t *testing.T) {
 	sgd.Rate = 0.7462
 
 	price, _ := model.MakePrice(usd, 1)
-	result, err := converter.Convert(price, sgd)
+	result, err := conversion.ConvertTo(price, sgd)
 
 	if err != nil {
 		t.Errorf("%v", err)
@@ -58,6 +52,29 @@ func TestItConvertsFromUsdToSgd(t *testing.T) {
 	}
 
 	if result.ToString() != "SGD 1.35" {
+		t.Errorf("The given [USD to SGD] format is invalid")
+	}
+}
+
+func TestItCanConvertValuesByUsingTheStore(t *testing.T) {
+	manager, _ := store.Mock("currency-layer", "SGD")
+	converter := conversion.Make(*manager)
+
+	_, usd := createCurrencies(t)
+	usd.Rate = 1
+
+	price, _ := model.MakePrice(usd, 1)
+	result, err := converter.Convert(price)
+
+	if err != nil {
+		t.Errorf("%v", err)
+	}
+
+	if result.ToFloat() != 0.74 {
+		t.Errorf("The given [SGD to USD] conversion is invalid")
+	}
+
+	if result.ToString() != "SGD 0.74" {
 		t.Errorf("The given [USD to SGD] format is invalid")
 	}
 }
