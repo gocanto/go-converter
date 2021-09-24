@@ -142,3 +142,18 @@ Also, if you are feeling curious, you can see how the store is able to [resolve 
 
 Moreover, this library ships with two different Currency Layer [implementations](https://github.com/voyago/converter/tree/main/pkg/store/handler/currencyLayer)
 since we had to find a way to mock its implementation detail at the [unit testing](https://github.com/voyago/converter/blob/main/tests/unit/store/handler/currencyLayer_test.go#L19) level.
+
+
+## Contributing
+
+Please, feel free to fork this repository to contribute to it by submitting a functionalities/bugs-fixes pull request to enhance it.
+
+## License
+
+Please see [License File](https://github.com/voyago/converter/blob/main/LICENSE) for more information.
+
+## How can I thank you?
+
+Why not star this GitHub repository and share its link on your social network?
+
+> Don't forget to [follow me on twitter](https://twitter.com/gocanto)!
