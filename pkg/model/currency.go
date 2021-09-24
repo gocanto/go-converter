@@ -5,7 +5,7 @@ import (
 )
 
 type Currency struct {
-	Code string  `json:"code"`
+	Code         string  `json:"code"`
 	Name         string  `json:"name"`
 	Rate         float32 `json:"rate"`
 	IsoCode      int16   `json:"iso_code"`
