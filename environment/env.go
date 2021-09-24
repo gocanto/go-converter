@@ -37,19 +37,19 @@ func (current Env) Get(key string) string {
 	return current.Items[key]
 }
 
-func (current Env) IsLive() bool  {
+func (current Env) IsLive() bool {
 	parts := strings.Split(current.filePath, "/.")[1]
 
 	return parts == "env"
 }
 
-func (current Env) IsTest() bool  {
+func (current Env) IsTest() bool {
 	parts := strings.Split(current.filePath, "/.")[1]
 
 	return parts == "testing"
 }
 
-func parseFileName(file string) string  {
+func parseFileName(file string) string {
 	_, fileName, _, _ := runtime.Caller(0)
 
 	baseDir := strings.Split(fileName, "/env.go")[0]

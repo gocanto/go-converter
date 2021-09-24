@@ -10,9 +10,9 @@ import (
 )
 
 type Store struct {
-	Source string
-	Env    environment.Env
-	Handler  handler.Handler
+	Source  string
+	Env     environment.Env
+	Handler handler.Handler
 }
 
 func Make(driver string, currency string) (*Store, error) {
@@ -35,7 +35,7 @@ func Mock(driver string, currency string) (*Store, error) {
 	return resolve(env, driver, currency)
 }
 
-func (current Store) ExchangeRates() (model.Currencies, error)  {
+func (current Store) ExchangeRates() (model.Currencies, error) {
 	return current.Handler.ExchangeRates()
 }
 

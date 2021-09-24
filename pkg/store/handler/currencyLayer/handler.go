@@ -13,8 +13,8 @@ import (
 const ApiEndpoint = "http://api.currencylayer.com/live"
 
 type Handler struct {
-	Source string
-	Env    environment.Env
+	Source   string
+	Env      environment.Env
 	Response Response
 }
 
@@ -34,11 +34,11 @@ func (current Handler) ExchangeRates() (model.Currencies, error) {
 		code := fmt.Sprintf("%s", value["code"])
 
 		collection.Add(model.Currency{
-			Code: code,
-			Name: fmt.Sprintf("%s", value["name"]),
+			Code:         code,
+			Name:         fmt.Sprintf("%s", value["name"]),
 			IsoMinorUnit: int8(value["iso_minor_unit"].(float64)),
-			IsoCode: int16(value["iso_code"].(float64)),
-			Rate: float32(current.Response.RateFor(code)),
+			IsoCode:      int16(value["iso_code"].(float64)),
+			Rate:         float32(current.Response.RateFor(code)),
 		})
 	}
 
@@ -77,10 +77,10 @@ func (current *Handler) parseResponse(response *http.Response) error {
 	return nil
 }
 
-func (current Handler) BaseUrl() string  {
+func (current Handler) BaseUrl() string {
 	return ApiEndpoint + "?access_key=" + current.ApiKey() + "&source=" + current.Source
 }
 
-func (current Handler) ApiKey() string  {
+func (current Handler) ApiKey() string {
 	return current.Env.Get("CONVERTER_CURRENCY_LAYER_KEY")
 }

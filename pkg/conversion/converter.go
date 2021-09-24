@@ -13,7 +13,7 @@ func Make(store store.Store) Converter {
 	return Converter{Store: store}
 }
 
-func (current Converter) Convert(price model.Price) (model.Price, error)  {
+func (current Converter) Convert(price model.Price) (model.Price, error) {
 	rates, err := current.Store.ExchangeRates()
 
 	if err != nil {

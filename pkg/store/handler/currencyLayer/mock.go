@@ -11,8 +11,8 @@ import (
 )
 
 type Mock struct {
-	Source string
-	Env    environment.Env
+	Source   string
+	Env      environment.Env
 	Response Response
 }
 
@@ -32,18 +32,18 @@ func (current Mock) ExchangeRates() (model.Currencies, error) {
 		code := fmt.Sprintf("%s", value["code"])
 
 		collection.Add(model.Currency{
-			Code: code,
-			Name: fmt.Sprintf("%s", value["name"]),
+			Code:         code,
+			Name:         fmt.Sprintf("%s", value["name"]),
 			IsoMinorUnit: int8(value["iso_minor_unit"].(float64)),
-			IsoCode: int16(value["iso_code"].(float64)),
-			Rate: float32(current.Response.RateFor(code)),
+			IsoCode:      int16(value["iso_code"].(float64)),
+			Rate:         float32(current.Response.RateFor(code)),
 		})
 	}
 
 	return collection, nil
 }
 
-func (current Mock) ApiKey() string  {
+func (current Mock) ApiKey() string {
 	return ""
 }
 

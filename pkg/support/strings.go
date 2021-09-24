@@ -17,7 +17,7 @@ func (current *Strings) RightPad(padStr string, times int8) {
 	(*current).Value = current.Value + strings.Repeat(padStr, padCountInt)
 }
 
-func (current Strings) ToInt64() (int64, error)  {
+func (current Strings) ToInt64() (int64, error) {
 	result, err := strconv.ParseInt(current.Value, 10, 64)
 
 	if err != nil {
