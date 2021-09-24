@@ -132,3 +132,13 @@ func createCurrencies(t *testing.T) (model.Currency, model.Currency) {
     return sgd, usd
 }
 ```
+
+## How do I create my own Driver?
+
+Creating your own driver is easy since you only need to fulfill the given [store handler](https://github.com/voyago/converter/blob/main/pkg/store/handler/handler.go) interface.
+
+You will be able to see a full example by inspecting the [currency layer handler](https://github.com/voyago/converter/blob/main/pkg/store/handler/currencyLayer/handler.go#L21).
+Also, if you are feeling curious, you can see how the store is able to [resolve drivers](https://github.com/voyago/converter/blob/main/pkg/store/store.go#L42) based on an incoming request.
+
+Moreover, this library ships with two different Currency Layer [implementations](https://github.com/voyago/converter/tree/main/pkg/store/handler/currencyLayer)
+since we had to find a way to mock its implementation detail at the [unit testing](https://github.com/voyago/converter/blob/main/tests/unit/store/handler/currencyLayer_test.go#L19) level.
