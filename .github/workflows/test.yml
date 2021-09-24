@@ -17,7 +17,7 @@ jobs:
       - name: Copy env file
         run: cp ./environment/.testing ./environment/.env
       - name: Run tests
-        run: CI=true go test ./tests/...
+        run: go test ./tests/...
 
   test-cache:
     runs-on: ubuntu-latest
@@ -46,4 +46,4 @@ jobs:
       - name: Copy env file
         run: cp ./environment/.testing ./environment/.env
       - name: Run tests
-        run: CI=true go test ./tests/...
+        run: go test ./tests/...
