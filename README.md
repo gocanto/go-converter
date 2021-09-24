@@ -1,7 +1,134 @@
 # Converter
 
-![example workflow](https://github.com/voyago/converter/actions/workflows/test.yml/badge.svg)
+![tests workflow](https://github.com/voyago/converter/actions/workflows/test.yml/badge.svg)
 [![Go Report Card](https://goreportcard.com/badge/voyago/converter)](https://goreportcard.com/report/voyago/converter)
 [![Go Reference](https://pkg.go.dev/badge/github.com/voyago/converter.svg)](https://pkg.go.dev/github.com/voyago/converter)
 
-It is a `immutable` drop in currencies converter that's data-agnostic.
+The converter is a data-agnostic library that allows you to perform currency conversions for a given request. Also, it is
+able to perform standalone conversion based on a given currency and price value pair.
+
+## Installation
+
+This library is based on [GO](https://golang.org). So before using it, make sure you have it installed in your machine.
+
+Once you have done this, you will be able to pull this library in by typing the following command in your terminal.
+
+```shell
+go get github.com/voyago/converter
+```
+
+## The data layer
+
+The converter is a driver-based library that abstracts away its data supply implementation. For this reason, you will not
+need to depend on a specific resource to retrieve given currencies' exchange rates.
+
+We currently ship with [only one data supplier](https://currencylayer.com/), but we intend to add more as we need it. So,
+please, do feel free to open a PR/Issue with a choice of your preference.
+
+## How do I use it?
+
+The best way to understand how this library works is by looking at our tests suit. There, we describe all the different
+components functionality related to it.
+
+But, you can have an overview at it below.
+
+
+### Standalone conversion example
+
+> Please, click [here](https://github.com/voyago/converter/blob/main/tests/unit/conversion/converter_test.go#L11-L57)
+> if you like to see a full example
+```go
+package conversion
+
+import (
+	"github.com/voyago/converter/pkg/conversion"
+	"github.com/voyago/converter/pkg/model"
+    "testing"
+)
+
+func TestItConvertsFromSgdToUsd(t *testing.T) {
+    //1 SGD to USD = 0.74
+    //Exchange rate = 1/0.74
+    sgd, usd := createCurrencies(t)
+
+    price, _ := model.MakePrice(sgd, 1)
+    result, err := conversion.ConvertTo(price, usd)
+
+    if err != nil {
+        t.Errorf("%v", err)
+    }
+
+    if result.ToFloat() != 0.74 {
+        t.Errorf("The given [SGD to USD] conversion is invalid")
+    }
+
+    if result.ToString() != "USD 0.74" {
+        t.Errorf("The given [SGD to USD] format is invalid")
+    }
+}
+
+func createCurrencies(t *testing.T) (model.Currency, model.Currency) {
+    sgd := mock.Currency(t)
+    sgd.Code = "SGD"
+    sgd.Rate = 1
+    sgd.IsoMinorUnit = 2
+
+    usd := mock.Currency(t)
+    usd.Code = "USD"
+    usd.Rate = 1.34
+    usd.IsoMinorUnit = 2
+    usd.IsoCode = 840
+
+    return sgd, usd
+}
+```
+
+### Store aware conversion example
+
+```go
+package conversion
+
+import (
+    "github.com/voyago/converter/pkg/conversion"
+    "github.com/voyago/converter/pkg/model"
+    "testing"
+)
+
+func TestItCanConvertValuesByUsingTheStore(t *testing.T) {
+	manager, _ := store.Mock("currency-layer", "SGD")
+	converter := conversion.Make(*manager)
+
+	_, usd := createCurrencies(t)
+	usd.Rate = 1
+
+	price, _ := model.MakePrice(usd, 1)
+	result, err := converter.Convert(price)
+
+	if err != nil {
+		t.Errorf("%v", err)
+	}
+
+	if result.ToFloat() != 0.74 {
+		t.Errorf("The given [SGD to USD] conversion is invalid")
+	}
+
+	if result.ToString() != "SGD 0.74" {
+		t.Errorf("The given [USD to SGD] format is invalid")
+	}
+}
+
+func createCurrencies(t *testing.T) (model.Currency, model.Currency) {
+    sgd := mock.Currency(t)
+    sgd.Code = "SGD"
+    sgd.Rate = 1
+    sgd.IsoMinorUnit = 2
+
+    usd := mock.Currency(t)
+    usd.Code = "USD"
+    usd.Rate = 1.34
+    usd.IsoMinorUnit = 2
+    usd.IsoCode = 840
+
+    return sgd, usd
+}
+```
