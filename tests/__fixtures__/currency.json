@@ -1,7 +1,6 @@
 {
   "code": "SGD",
   "name": "Singapore Dollar",
-  "symbol": "$",
   "rate": 0.74,
   "iso_code": 702,
   "iso_minor_unit": 2

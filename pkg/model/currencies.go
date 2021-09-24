@@ -9,7 +9,7 @@ type Currencies struct {
 	Items *map[string]Currency
 }
 
-func Make() Currencies {
+func MakeCurrencies() Currencies {
 	items := make(map[string]Currency)
 
 	return Currencies{Items: &items}

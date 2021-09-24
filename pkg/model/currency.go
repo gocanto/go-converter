@@ -1,19 +1,18 @@
 package model
 
 import (
-	"github.com/voyago/converter/src/support"
+	"github.com/voyago/converter/pkg/support"
 )
 
 type Currency struct {
 	Code         string  `json:"code"`
 	Name         string  `json:"name"`
-	Symbol       string  `json:"symbol"`
 	Rate         float32 `json:"rate"`
-	IsoCode      int     `json:"iso_code"`
-	IsoMinorUnit int     `json:"iso_minor_unit"`
+	IsoCode      int16   `json:"iso_code"`
+	IsoMinorUnit int8    `json:"iso_minor_unit"`
 }
 
-func (current Currency) Multiplier() int64  {
+func (current Currency) Multiplier() int64 {
 	target := support.Strings{Value: "1"}
 	target.RightPad("0", current.IsoMinorUnit)
 
@@ -24,7 +23,7 @@ func (current Currency) Multiplier() int64  {
 	return 1
 }
 
-func (current Currency) ToRatePrice() (Price, error)  {
+func (current Currency) ToRatePrice() (Price, error) {
 	price, err := MakePrice(current, current.Rate)
 
 	if err != nil {

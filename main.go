@@ -2,11 +2,24 @@ package main
 
 import (
 	"fmt"
-	"github.com/joho/godotenv"
+	"github.com/voyago/converter/environment"
+	"github.com/voyago/converter/pkg/store/handler/currencyLayer"
+	"io"
+	"net/http"
 )
 
 func main() {
-	myEnv, _ := godotenv.Read()
+	env, _ := environment.Make()
+	resp, _ := http.Get(currencyLayer.ApiEndpoint + "?source=SGD&access_key=" + env.Get("CONVERTER_CURRENCY_LAYER_KEY"))
 
-	fmt.Printf("Welcome to the [%s] library... \n", myEnv["LIBRARY_NAME"])
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			fmt.Println("error closing handler")
+		}
+	}(resp.Body)
+
+	body, _ := io.ReadAll(resp.Body)
+
+	fmt.Println(string(body))
 }

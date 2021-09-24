@@ -1,12 +1,13 @@
 package model
 
 import (
-	"github.com/voyago/converter/src/model"
+	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/tests/mock"
 	"testing"
 )
 
 func TestItAllowsForBasicFormatting(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t) //SGD
 
 	price, err := model.MakePrice(currency, "0.99")
@@ -16,12 +17,13 @@ func TestItAllowsForBasicFormatting(t *testing.T) {
 		t.FailNow()
 	}
 
-	if price.ToString() != "$ 0.99" {
+	if price.ToString() != "SGD 0.99" {
 		t.Error("The given price formatting is invalid")
 	}
 }
 
 func TestItAllowsCreationFromIntegers(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t)
 
 	price, err := model.MakePrice(currency, 199)
@@ -36,6 +38,7 @@ func TestItAllowsCreationFromIntegers(t *testing.T) {
 }
 
 func TestItAllowsCreationFromStrings(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t)
 
 	price, err := model.MakePrice(currency, "0.99")
@@ -55,6 +58,7 @@ func TestItAllowsCreationFromStrings(t *testing.T) {
 }
 
 func TestItAllowsCreationFromFloaters(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t)
 
 	price, err := model.MakePrice(currency, 1.99)

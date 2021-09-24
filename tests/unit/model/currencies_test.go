@@ -1,12 +1,13 @@
 package model
 
 import (
-	"github.com/voyago/converter/src/model"
+	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/tests/mock"
 	"testing"
 )
 
 func TestItHoldsValidData(t *testing.T) {
+	t.Parallel()
 	collection := mockCurrencies()
 
 	if collection.Count() != 0 || len(collection.All()) != 0 {
@@ -15,6 +16,7 @@ func TestItHoldsValidData(t *testing.T) {
 }
 
 func TestItAddsCurrencies(t *testing.T) {
+	t.Parallel()
 	collection := mockCurrencies()
 	collection.Add(mock.Currency(t))
 
@@ -24,6 +26,7 @@ func TestItAddsCurrencies(t *testing.T) {
 }
 
 func TestItFindsCurrencies(t *testing.T) {
+	t.Parallel()
 	collection := mockCurrencies()
 
 	if _, err := collection.Find("SGD"); err == nil {
@@ -42,6 +45,7 @@ func TestItFindsCurrencies(t *testing.T) {
 }
 
 func TestItRemovesCurrencies(t *testing.T) {
+	t.Parallel()
 	collection := mockCurrencies()
 	currency := mock.Currency(t)
 

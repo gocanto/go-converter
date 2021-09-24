@@ -1,12 +1,13 @@
 package model
 
 import (
-	"github.com/voyago/converter/src/model"
+	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/tests/mock"
 	"testing"
 )
 
 func TestItComputesValidMultipliers(t *testing.T) {
+	t.Parallel()
 	a := model.Currency{IsoMinorUnit: 1}
 	b := model.Currency{IsoMinorUnit: 2}
 	c := model.Currency{IsoMinorUnit: 3}
@@ -25,6 +26,7 @@ func TestItComputesValidMultipliers(t *testing.T) {
 }
 
 func TestItCanConvertItSelfToRatePrice(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t)
 	currency.Rate = 100
 
@@ -34,12 +36,13 @@ func TestItCanConvertItSelfToRatePrice(t *testing.T) {
 		t.Errorf("%v", err)
 	}
 
-	if rate.ToString() != "$ 100.00" {
+	if rate.ToString() != "SGD 100.00" {
 		t.Errorf("The given rate amount [100] is invalid")
 	}
 }
 
 func TestItHoldsBasicInfo(t *testing.T) {
+	t.Parallel()
 	currency := mock.Currency(t)
 
 	if currency.Code != "SGD" {
@@ -50,12 +53,8 @@ func TestItHoldsBasicInfo(t *testing.T) {
 		t.Errorf("Currency name [%s] is invalid", currency.Name)
 	}
 
-	if currency.Symbol != "$" {
-		t.Errorf("Currency smbold [%s] is invalid", currency.Symbol)
-	}
-
 	if currency.Rate != 0.74 {
-		t.Errorf("Currency smbold [%f] is invalid", currency.Rate)
+		t.Errorf("Currency rate [%f] is invalid", currency.Rate)
 	}
 
 	if currency.IsoCode != 702 {
