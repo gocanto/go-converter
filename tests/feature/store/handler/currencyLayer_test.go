@@ -3,14 +3,16 @@ package handler
 import (
 	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/pkg/store/handler/currencyLayer"
+	"os"
 	"testing"
 )
 
 func TestItProperlyFetchesTheRatesFromTheAPI(t *testing.T) {
 	t.Parallel()
 
-	t.Skipf("The [currency layer] feature test was skipped")
-	t.SkipNow()
+	if os.Getenv("CI") != "" {
+		t.Skip("Skipping testing in CI environment")
+	}
 
 	env, err := environment.Make()
 
