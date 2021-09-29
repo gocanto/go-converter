@@ -6,6 +6,10 @@ import (
 	"testing"
 )
 
+func TestName(t *testing.T) {
+	environment.Live(".env")
+}
+
 func TestItProperlyFindsRates(t *testing.T) {
 	t.Parallel()
 
