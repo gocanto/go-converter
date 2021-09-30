@@ -3,6 +3,7 @@ package environment
 import (
 	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/pkg/store/handler/currencyLayer"
+	"os"
 	"testing"
 )
 
@@ -45,5 +46,25 @@ func TestItCanLoadGivenEnvFiles(t *testing.T) {
 
 	if env.Get(currencyLayer.ApiKeyName) != "foo-bar-biz" {
 		t.Errorf("The given key [%s] is invalid", currencyLayer.ApiKeyName)
+	}
+}
+
+func TestItFallbackToOsEnvIfKeysAreNotFound(t *testing.T) {
+	t.Parallel()
+
+	key := "GITHUB_HANDLER"
+	value := "gocanto"
+
+	err := os.Setenv(key, value)
+
+	if err != nil {
+		t.Errorf("%v", err)
+		t.FailNow()
+	}
+
+	env, _ := environment.Make("converter")
+
+	if env.Get(key) != value {
+		t.Errorf("The given key [%s] is invalid", key)
 	}
 }
