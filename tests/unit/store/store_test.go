@@ -1,23 +1,17 @@
 package store
 
 import (
+	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/pkg/store"
 	"github.com/voyago/converter/pkg/store/handler/currencyLayer"
 	"testing"
 )
 
-func TestItReturnsNilForInvalidDrivers(t *testing.T) {
-	t.Parallel()
-
-	if manager, err := store.Make("foo", "bar"); manager != nil {
-		t.Errorf("%v", err)
-	}
-}
-
 func TestItExposesExchangesRates(t *testing.T) {
 	t.Parallel()
 
-	manager, err := store.Mock("currency-layer", "SGD")
+	env, _ := environment.MakeWith("converter", ".env.example")
+	manager, err := store.Make(store.NewCurrencyLayerRequest(env, "SGD"))
 
 	if err != nil {
 		t.Errorf("%v", err)
@@ -32,7 +26,8 @@ func TestItExposesExchangesRates(t *testing.T) {
 func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 	t.Parallel()
 
-	manager, err := store.Mock("currency-layer", "SGD")
+	env, _ := environment.MakeWith("converter", ".env.example")
+	manager, err := store.Make(store.NewCurrencyLayerRequest(env, "SGD"))
 
 	if err != nil {
 		t.Errorf("%v", err)

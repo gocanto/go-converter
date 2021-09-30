@@ -6,21 +6,17 @@ import (
 	"testing"
 )
 
-func TestName(t *testing.T) {
-	environment.Live(".env")
-}
-
 func TestItProperlyFindsRates(t *testing.T) {
 	t.Parallel()
 
-	env, err := environment.MakeWith("testing")
+	env, err := environment.MakeWith("converter", ".env.example")
 
 	if err != nil {
 		t.Errorf("%v", err)
 		t.FailNow()
 	}
 
-	driver := currencyLayer.Mock{Source: "USD", Env: *env}
+	driver := currencyLayer.Mock{Source: "USD", Env: env}
 
 	rates, err := driver.ExchangeRates()
 
