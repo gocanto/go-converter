@@ -15,18 +15,19 @@ const (
 type Env struct {
 	items    *map[string]string
 	filePath string
+	rootDir  string
 }
 
 func Make(rootDir string) (Env, error) {
 	path := resolveFilePath(rootDir, FileName)
 
-	return buildFrom(path)
+	return buildFrom(rootDir, path)
 }
 
 func MakeWith(rootDir string, file string) (Env, error) {
 	path := resolveFilePath(rootDir, file)
 
-	return buildFrom(path)
+	return buildFrom(rootDir, path)
 }
 
 func (current Env) Get(key string) string {
@@ -48,8 +49,8 @@ func (current Env) IsTest() bool {
 	return !current.IsLive()
 }
 
-func (current Env) Items() map[string]string {
-	return *current.items
+func (current Env) GetRootDir() string {
+	return current.rootDir
 }
 
 func resolveFilePath(directory string, fileName string) string {
@@ -61,7 +62,7 @@ func resolveFilePath(directory string, fileName string) string {
 	return string(path) + `/` + fileName
 }
 
-func buildFrom(path string) (Env, error) {
+func buildFrom(rootDir string, path string) (Env, error) {
 	env := Env{}
 
 	if _, err := os.Stat(path); os.IsNotExist(err) {
@@ -75,6 +76,7 @@ func buildFrom(path string) (Env, error) {
 	}
 
 	env.filePath = path
+	env.rootDir = rootDir
 
 	return env, nil
 }

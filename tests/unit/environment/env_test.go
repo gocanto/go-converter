@@ -17,6 +17,10 @@ func TestItCanLoadDefaultEnvFiles(t *testing.T) {
 		t.FailNow()
 	}
 
+	if env.GetRootDir() != "converter" {
+		t.Errorf("The given env root directoy invalid")
+	}
+
 	if !env.IsLive() {
 		t.Errorf("The given env is invalid")
 	}
@@ -34,6 +38,10 @@ func TestItCanLoadGivenEnvFiles(t *testing.T) {
 	if err != nil {
 		t.Errorf("%v", err)
 		t.FailNow()
+	}
+
+	if env.GetRootDir() != "converter" {
+		t.Errorf("The given env root directoy invalid")
 	}
 
 	if !env.IsTest() {
@@ -63,6 +71,10 @@ func TestItFallbackToOsEnvIfKeysAreNotFound(t *testing.T) {
 	}
 
 	env, _ := environment.Make("converter")
+
+	if env.GetRootDir() != "converter" {
+		t.Errorf("The given env root directoy invalid")
+	}
 
 	if env.Get(key) != value {
 		t.Errorf("The given key [%s] is invalid", key)
