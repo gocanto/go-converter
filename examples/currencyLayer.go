@@ -1,4 +1,4 @@
-package main
+package examples
 
 import (
 	"fmt"
@@ -8,9 +8,9 @@ import (
 	"net/http"
 )
 
-func main() {
-	env, _ := environment.Make()
-	resp, _ := http.Get(currencyLayer.ApiEndpoint + "?source=SGD&access_key=" + env.Get("CONVERTER_CURRENCY_LAYER_KEY"))
+func Fetch() {
+	env, _ := environment.Make("converter")
+	resp, _ := http.Get(currencyLayer.ApiEndpoint + "?source=SGD&access_key=" + env.Get(currencyLayer.ApiKeyName))
 
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()

@@ -1,6 +1,7 @@
 package conversion
 
 import (
+	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/pkg/conversion"
 	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/pkg/store"
@@ -57,7 +58,9 @@ func TestItConvertsFromUsdToSgd(t *testing.T) {
 }
 
 func TestItCanConvertValuesByUsingTheStore(t *testing.T) {
-	manager, _ := store.Mock("currency-layer", "SGD")
+	env, _ := environment.MakeWith("converter", ".env.example")
+	manager, _ := store.Make(store.NewCurrencyLayerRequest(env, "SGD"))
+
 	converter := conversion.Make(*manager)
 
 	_, usd := createCurrencies(t)

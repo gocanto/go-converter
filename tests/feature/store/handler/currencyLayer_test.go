@@ -10,14 +10,14 @@ func TestItProperlyFetchesTheRatesFromTheAPI(t *testing.T) {
 	t.Parallel()
 	t.Skip("Skipping testing in CI environment")
 
-	env, err := environment.Make()
+	env, err := environment.Make("converter")
 
 	if err != nil {
 		t.Errorf("%v", err)
 		t.FailNow()
 	}
 
-	driver := currencyLayer.Handler{Source: "SGD", Env: *env}
+	driver := currencyLayer.Handler{Source: "SGD", Env: env}
 
 	rates, err := driver.ExchangeRates()
 

@@ -15,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Copy env file
-        run: cp ./environment/.testing ./environment/.env
+        run: cp ./environment/.env.stub ./.env
       - name: Run tests
         run: go test ./tests/...
 
@@ -44,6 +44,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
       - name: Copy env file
-        run: cp ./environment/.testing ./environment/.env
+        run: cp ./environment/.env.stub ./.env
       - name: Run tests
         run: go test ./tests/...

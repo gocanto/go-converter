@@ -10,7 +10,10 @@ import (
 	"net/http"
 )
 
-const ApiEndpoint = "http://api.currencylayer.com/live"
+const (
+	ApiEndpoint = "http://api.currencylayer.com/live"
+	ApiKeyName  = "CONVERTER_CURRENCY_LAYER_KEY"
+)
 
 type Handler struct {
 	Source   string
@@ -82,5 +85,5 @@ func (current Handler) BaseUrl() string {
 }
 
 func (current Handler) ApiKey() string {
-	return current.Env.Get("CONVERTER_CURRENCY_LAYER_KEY")
+	return current.Env.Get(ApiKeyName)
 }
