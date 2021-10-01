@@ -31,6 +31,7 @@ WIP; :bowtie:
 
 If you are feeling curious, you can check the whole [test suit](https://github.com/voyago/converter/tree/main/tests/unit/conversion) to find out how this library works?
 
+Moreover, we have published a [playground](https://github.com/voyago/converter-tests) to demonstrate how this library can be consumed.
 
 ## How do I create my own Driver?
 
