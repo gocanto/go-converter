@@ -14,14 +14,14 @@ func MakeCurrenciesBlueprint() (Blueprint, error) {
 	body := Blueprint{}
 	var response []map[string]interface{}
 
-	if err := support.ParseJson(body.SourcePath(), &response); err != nil {
+	if err := support.ParseJson(body.GetSourcePath(), &response); err != nil {
 		return Blueprint{}, err
 	}
 
 	return Blueprint{items: response}, nil
 }
 
-func (body Blueprint) SourcePath() string {
+func (body Blueprint) GetSourcePath() string {
 	_, fileName, _, _ := runtime.Caller(0)
 	baseDir := strings.Split(fileName, "/pkg/store/blueprint/currencies.go")[0]
 
