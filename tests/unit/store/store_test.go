@@ -43,15 +43,15 @@ func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 
 	switch value := manager.GetHandler().(type) {
 	case currencyLayer.Mock:
-		if value.ApiKey() != "" {
-			t.Errorf("The given key is invalid, %s", value.ApiKey())
-		}
-
 		if value.GetSource() != "SGD" {
 			t.Errorf("The given currency is invalid")
 		}
 	default:
 		t.Errorf("The given store handler is invalid")
 		t.FailNow()
+	}
+
+	if rates, err := manager.ExchangeRates(); err != nil || rates.Count() < 1 {
+		t.Errorf("The given manager [mock] has invalid rates")
 	}
 }

@@ -47,11 +47,6 @@ func (current *Mock) FetchRates() error {
 	return nil
 }
 
-// ApiKey @tod remove if not needed
-func (current Mock) ApiKey() string {
-	return ""
-}
-
 func (current *Mock) SetSource(source string) {
 	current.source = source
 }

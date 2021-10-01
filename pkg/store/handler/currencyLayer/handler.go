@@ -72,11 +72,9 @@ func (current *Handler) parseResponse(response *http.Response) error {
 }
 
 func (current Handler) BaseUrl() string {
-	return ApiEndpoint + "?access_key=" + current.ApiKey() + "&source=" + current.source
-}
+	key := current.env.Get(ApiKeyName)
 
-func (current Handler) ApiKey() string {
-	return current.env.Get(ApiKeyName)
+	return ApiEndpoint + "?access_key=" + key + "&source=" + current.source
 }
 
 func (current *Handler) SetSource(source string) {
