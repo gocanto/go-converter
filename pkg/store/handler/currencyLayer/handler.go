@@ -16,9 +16,9 @@ const (
 )
 
 type Handler struct {
-	Source   string
-	Env      environment.Env
-	Response Response
+	source   string
+	env      environment.Env
+	response Response
 }
 
 func (current Handler) ExchangeRates() (model.Currencies, error) {
@@ -41,7 +41,7 @@ func (current Handler) ExchangeRates() (model.Currencies, error) {
 			Name:         fmt.Sprintf("%s", value["name"]),
 			IsoMinorUnit: int8(value["iso_minor_unit"].(float64)),
 			IsoCode:      int16(value["iso_code"].(float64)),
-			Rate:         float32(current.Response.RateFor(code)),
+			Rate:         float32(current.response.RateFor(code)),
 		})
 	}
 
@@ -73,7 +73,7 @@ func (current *Handler) parseResponse(response *http.Response) error {
 		return err
 	}
 
-	if err = json.Unmarshal(body, &current.Response); err != nil {
+	if err = json.Unmarshal(body, &current.response); err != nil {
 		return err
 	}
 
@@ -81,9 +81,29 @@ func (current *Handler) parseResponse(response *http.Response) error {
 }
 
 func (current Handler) BaseUrl() string {
-	return ApiEndpoint + "?access_key=" + current.ApiKey() + "&source=" + current.Source
+	return ApiEndpoint + "?access_key=" + current.ApiKey() + "&source=" + current.source
 }
 
 func (current Handler) ApiKey() string {
-	return current.Env.Get(ApiKeyName)
+	return current.env.Get(ApiKeyName)
+}
+
+func (current *Handler) SetSource(source string) {
+	current.source = source
+}
+
+func (current Handler) GetSource() string {
+	return current.source
+}
+
+func (current *Handler) SetEnv(env environment.Env) {
+	current.env = env
+}
+
+func (current Handler) GetEnv() environment.Env {
+	return current.env
+}
+
+func (current Handler) GetResponse() Response {
+	return current.response
 }

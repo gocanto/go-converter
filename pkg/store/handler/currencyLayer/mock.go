@@ -11,9 +11,9 @@ import (
 )
 
 type Mock struct {
-	Source   string
-	Env      environment.Env
-	Response Response
+	source   string
+	env      environment.Env
+	response Response
 }
 
 func (current Mock) ExchangeRates() (model.Currencies, error) {
@@ -36,15 +36,11 @@ func (current Mock) ExchangeRates() (model.Currencies, error) {
 			Name:         fmt.Sprintf("%s", value["name"]),
 			IsoMinorUnit: int8(value["iso_minor_unit"].(float64)),
 			IsoCode:      int16(value["iso_code"].(float64)),
-			Rate:         float32(current.Response.RateFor(code)),
+			Rate:         float32(current.response.RateFor(code)),
 		})
 	}
 
 	return collection, nil
-}
-
-func (current Mock) ApiKey() string {
-	return ""
 }
 
 func (current *Mock) FetchRates() error {
@@ -53,9 +49,34 @@ func (current *Mock) FetchRates() error {
 	dir := strings.Split(fileName, "/pkg/store/handler/currencyLayer/mock.go")[0]
 	payload := dir + "/resources/currency_layer_live_response.json"
 
-	if err := support.ParseJson(payload, &current.Response); err != nil {
+	if err := support.ParseJson(payload, &current.response); err != nil {
 		return err
 	}
 
 	return nil
+}
+
+// ApiKey @tod remove if not needed
+func (current Mock) ApiKey() string {
+	return ""
+}
+
+func (current *Mock) SetSource(source string) {
+	current.source = source
+}
+
+func (current Mock) GetSource() string {
+	return current.source
+}
+
+func (current *Mock) SetEnv(env environment.Env) {
+	current.env = env
+}
+
+func (current Mock) GetEnv() environment.Env {
+	return current.env
+}
+
+func (current Mock) GetResponse() Response {
+	return current.response
 }

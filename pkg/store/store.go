@@ -57,8 +57,16 @@ func (current *Store) build(driver string) error {
 
 func (current Store) currencyLayerHandler() handler.Handler {
 	if current.env.IsLive() {
-		return currencyLayer.Handler{Source: current.source, Env: current.env}
+		driver := currencyLayer.Handler{}
+		driver.SetSource(current.source)
+		driver.SetEnv(current.env)
+
+		return driver
 	}
 
-	return currencyLayer.Mock{Source: current.source, Env: current.env}
+	driver := currencyLayer.Mock{}
+	driver.SetSource(current.source)
+	driver.SetEnv(current.env)
+
+	return driver
 }
