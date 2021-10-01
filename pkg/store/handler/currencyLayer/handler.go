@@ -20,7 +20,7 @@ type Handler struct {
 	response Response
 }
 
-func (current Handler) ExchangeRates() (model.Currencies, error) {
+func (current Handler) GetExchangeRates() (model.Currencies, error) {
 	currencies := model.MakeCurrencies()
 	currenciesBlueprint, err := blueprint.MakeCurrenciesBlueprint()
 

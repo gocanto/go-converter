@@ -28,8 +28,8 @@ func Make(request Request) (*Store, error) {
 	return store, nil
 }
 
-func (current Store) ExchangeRates() (model.Currencies, error) {
-	return current.handler.ExchangeRates()
+func (current Store) GetExchangeRates() (model.Currencies, error) {
+	return current.handler.GetExchangeRates()
 }
 
 func (current Store) GetSource() string {

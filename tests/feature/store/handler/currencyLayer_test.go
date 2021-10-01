@@ -21,7 +21,7 @@ func TestItProperlyFetchesTheRatesFromTheAPI(t *testing.T) {
 	driver.SetSource("SGD")
 	driver.SetEnv(env)
 
-	rates, err := driver.ExchangeRates()
+	rates, err := driver.GetExchangeRates()
 
 	if err != nil {
 		t.Errorf("%v", err)

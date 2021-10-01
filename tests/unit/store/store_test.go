@@ -18,7 +18,7 @@ func TestItExposesExchangesRates(t *testing.T) {
 		t.FailNow()
 	}
 
-	if rates, err := manager.ExchangeRates(); rates.Count() < 1 || err != nil {
+	if rates, err := manager.GetExchangeRates(); rates.Count() < 1 || err != nil {
 		t.Errorf("The [currency layer - mock] store exaches rates are invalid")
 	}
 }
@@ -51,7 +51,7 @@ func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 		t.FailNow()
 	}
 
-	if rates, err := manager.ExchangeRates(); err != nil || rates.Count() < 1 {
+	if rates, err := manager.GetExchangeRates(); err != nil || rates.Count() < 1 {
 		t.Errorf("The given manager [mock] has invalid rates")
 	}
 }

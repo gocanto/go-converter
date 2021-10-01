@@ -15,7 +15,7 @@ type Mock struct {
 	response Response
 }
 
-func (current Mock) ExchangeRates() (model.Currencies, error) {
+func (current Mock) GetExchangeRates() (model.Currencies, error) {
 	currencies := model.MakeCurrencies()
 	currenciesBlueprint, err := blueprint.MakeCurrenciesBlueprint()
 

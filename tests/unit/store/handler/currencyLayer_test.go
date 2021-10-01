@@ -20,7 +20,7 @@ func TestItProperlyFindsRates(t *testing.T) {
 	driver.SetSource("USD")
 	driver.SetEnv(env)
 
-	rates, err := driver.ExchangeRates()
+	rates, err := driver.GetExchangeRates()
 
 	if err != nil {
 		t.Errorf("%v", err)

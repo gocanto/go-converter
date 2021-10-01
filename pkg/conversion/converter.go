@@ -14,7 +14,7 @@ func Make(store store.Store) Converter {
 }
 
 func (current Converter) Convert(price model.Price) (model.Price, error) {
-	rates, err := current.store.ExchangeRates()
+	rates, err := current.store.GetExchangeRates()
 
 	if err != nil {
 		return model.Price{}, err
