@@ -10,15 +10,15 @@ import (
 )
 
 type Store struct {
-	Source  string
-	Env     environment.Env
-	Handler handler.Handler
+	source  string
+	env     environment.Env
+	handler handler.Handler
 }
 
 func Make(request Request) (*Store, error) {
 	store := &Store{
-		Source: request.GetSource(),
-		Env:    request.GetEnv(),
+		source: request.GetSource(),
+		env:    request.GetEnv(),
 	}
 
 	if err := store.build(request.GetDriver()); err != nil {
@@ -29,13 +29,25 @@ func Make(request Request) (*Store, error) {
 }
 
 func (current Store) ExchangeRates() (model.Currencies, error) {
-	return current.Handler.ExchangeRates()
+	return current.handler.ExchangeRates()
+}
+
+func (current Store) GetSource() string {
+	return current.source
+}
+
+func (current Store) GetEnv() environment.Env {
+	return current.env
+}
+
+func (current Store) GetHandler() handler.Handler {
+	return current.handler
 }
 
 func (current *Store) build(driver string) error {
 	switch driver {
 	case CurrencyLayerDriverName:
-		(*current).Handler = current.currencyLayerHandler()
+		(*current).handler = current.currencyLayerHandler()
 	default:
 		return errors.New(fmt.Sprintf("The given driver [%s] is invalid", driver))
 	}
@@ -44,9 +56,9 @@ func (current *Store) build(driver string) error {
 }
 
 func (current Store) currencyLayerHandler() handler.Handler {
-	if current.Env.IsLive() {
-		return currencyLayer.Handler{Source: current.Source, Env: current.Env}
+	if current.env.IsLive() {
+		return currencyLayer.Handler{Source: current.source, Env: current.env}
 	}
 
-	return currencyLayer.Mock{Source: current.Source, Env: current.Env}
+	return currencyLayer.Mock{Source: current.source, Env: current.env}
 }

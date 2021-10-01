@@ -20,7 +20,7 @@ func (current Converter) Convert(price model.Price) (model.Price, error) {
 		return model.Price{}, err
 	}
 
-	currency, err := rates.Find(current.Store.Source)
+	currency, err := rates.Find(current.Store.GetSource())
 
 	if err != nil {
 		return model.Price{}, err

@@ -33,15 +33,15 @@ func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 		t.Errorf("%v", err)
 	}
 
-	if manager.Env.IsLive() {
+	if manager.GetEnv().IsLive() {
 		t.Errorf("The given store environment is invalid.")
 	}
 
-	if manager.Source != "SGD" {
+	if manager.GetSource() != "SGD" {
 		t.Errorf("The given store base currency is invalid")
 	}
 
-	switch value := manager.Handler.(type) {
+	switch value := manager.GetHandler().(type) {
 	case currencyLayer.Mock:
 		if value.ApiKey() != "" {
 			t.Errorf("The given key is invalid, %s", value.ApiKey())
