@@ -2,7 +2,6 @@ package currencyLayer
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/pkg/store/blueprint"
@@ -22,30 +21,22 @@ type Handler struct {
 }
 
 func (current Handler) ExchangeRates() (model.Currencies, error) {
-	collection := model.MakeCurrencies()
+	currencies := model.MakeCurrencies()
 	currenciesBlueprint, err := blueprint.MakeCurrenciesBlueprint()
 
 	if err != nil {
-		return collection, err
+		return currencies, err
 	}
 
 	if err := current.FetchRates(); err != nil {
-		return collection, err
+		return currencies, err
 	}
 
 	for _, value := range currenciesBlueprint.Items() {
-		code := fmt.Sprintf("%s", value["code"])
-
-		collection.Add(model.Currency{
-			Code:         code,
-			Name:         fmt.Sprintf("%s", value["name"]),
-			IsoMinorUnit: int8(value["iso_minor_unit"].(float64)),
-			IsoCode:      int16(value["iso_code"].(float64)),
-			Rate:         float32(current.response.RateFor(code)),
-		})
+		mapExchangeRates(current.response, value, &currencies)
 	}
 
-	return collection, nil
+	return currencies, nil
 }
 
 func (current *Handler) FetchRates() error {

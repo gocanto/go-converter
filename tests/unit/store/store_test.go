@@ -18,7 +18,7 @@ func TestItExposesExchangesRates(t *testing.T) {
 		t.FailNow()
 	}
 
-	if rates, err := manager.ExchangeRates(); rates.Count() != 179 || err != nil {
+	if rates, err := manager.ExchangeRates(); rates.Count() < 1 || err != nil {
 		t.Errorf("The [currency layer - mock] store exaches rates are invalid")
 	}
 }
