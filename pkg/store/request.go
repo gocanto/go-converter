@@ -14,7 +14,7 @@ func NewCurrencyLayerRequest(env environment.Env, source string) Request {
 	return Request{
 		env:    env,
 		source: source,
-		driver: "currency-layer",
+		driver: CurrencyLayerDriverName,
 	}
 }
 

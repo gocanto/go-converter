@@ -6,21 +6,21 @@ import (
 )
 
 type Converter struct {
-	Store store.Store
+	store store.Store
 }
 
 func Make(store store.Store) Converter {
-	return Converter{Store: store}
+	return Converter{store: store}
 }
 
 func (current Converter) Convert(price model.Price) (model.Price, error) {
-	rates, err := current.Store.ExchangeRates()
+	rates, err := current.store.GetExchangeRates()
 
 	if err != nil {
 		return model.Price{}, err
 	}
 
-	currency, err := rates.Find(current.Store.Source)
+	currency, err := rates.Find(current.store.GetSource())
 
 	if err != nil {
 		return model.Price{}, err

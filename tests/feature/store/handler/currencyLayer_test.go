@@ -17,9 +17,11 @@ func TestItProperlyFetchesTheRatesFromTheAPI(t *testing.T) {
 		t.FailNow()
 	}
 
-	driver := currencyLayer.Handler{Source: "SGD", Env: env}
+	driver := currencyLayer.Handler{}
+	driver.SetSource("SGD")
+	driver.SetEnv(env)
 
-	rates, err := driver.ExchangeRates()
+	rates, err := driver.GetExchangeRates()
 
 	if err != nil {
 		t.Errorf("%v", err)

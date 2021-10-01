@@ -2,7 +2,6 @@ package currencyLayer
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/voyago/converter/environment"
 	"github.com/voyago/converter/pkg/model"
 	"github.com/voyago/converter/pkg/store/blueprint"
@@ -16,36 +15,28 @@ const (
 )
 
 type Handler struct {
-	Source   string
-	Env      environment.Env
-	Response Response
+	source   string
+	env      environment.Env
+	response Response
 }
 
-func (current Handler) ExchangeRates() (model.Currencies, error) {
-	collection := model.MakeCurrencies()
+func (current Handler) GetExchangeRates() (model.Currencies, error) {
+	currencies := model.MakeCurrencies()
 	currenciesBlueprint, err := blueprint.MakeCurrenciesBlueprint()
 
 	if err != nil {
-		return collection, err
+		return currencies, err
 	}
 
 	if err := current.FetchRates(); err != nil {
-		return collection, err
+		return currencies, err
 	}
 
 	for _, value := range currenciesBlueprint.Items() {
-		code := fmt.Sprintf("%s", value["code"])
-
-		collection.Add(model.Currency{
-			Code:         code,
-			Name:         fmt.Sprintf("%s", value["name"]),
-			IsoMinorUnit: int8(value["iso_minor_unit"].(float64)),
-			IsoCode:      int16(value["iso_code"].(float64)),
-			Rate:         float32(current.Response.RateFor(code)),
-		})
+		mapExchangeRates(current.response, value, &currencies)
 	}
 
-	return collection, nil
+	return currencies, nil
 }
 
 func (current *Handler) FetchRates() error {
@@ -73,7 +64,7 @@ func (current *Handler) parseResponse(response *http.Response) error {
 		return err
 	}
 
-	if err = json.Unmarshal(body, &current.Response); err != nil {
+	if err = json.Unmarshal(body, &current.response); err != nil {
 		return err
 	}
 
@@ -81,9 +72,27 @@ func (current *Handler) parseResponse(response *http.Response) error {
 }
 
 func (current Handler) BaseUrl() string {
-	return ApiEndpoint + "?access_key=" + current.ApiKey() + "&source=" + current.Source
+	key := current.env.Get(ApiKeyName)
+
+	return ApiEndpoint + "?access_key=" + key + "&source=" + current.source
 }
 
-func (current Handler) ApiKey() string {
-	return current.Env.Get(ApiKeyName)
+func (current *Handler) SetSource(source string) {
+	current.source = source
+}
+
+func (current Handler) GetSource() string {
+	return current.source
+}
+
+func (current *Handler) SetEnv(env environment.Env) {
+	current.env = env
+}
+
+func (current Handler) GetEnv() environment.Env {
+	return current.env
+}
+
+func (current Handler) GetResponse() Response {
+	return current.response
 }

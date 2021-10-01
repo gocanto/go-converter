@@ -18,7 +18,7 @@ func TestItExposesExchangesRates(t *testing.T) {
 		t.FailNow()
 	}
 
-	if rates, err := manager.ExchangeRates(); rates.Count() != 179 || err != nil {
+	if rates, err := manager.GetExchangeRates(); rates.Count() < 1 || err != nil {
 		t.Errorf("The [currency layer - mock] store exaches rates are invalid")
 	}
 }
@@ -33,25 +33,25 @@ func TestItProperlyBuildsTheCurrencyLayerDriver(t *testing.T) {
 		t.Errorf("%v", err)
 	}
 
-	if manager.Env.IsLive() {
+	if manager.GetEnv().IsLive() {
 		t.Errorf("The given store environment is invalid.")
 	}
 
-	if manager.Source != "SGD" {
+	if manager.GetSource() != "SGD" {
 		t.Errorf("The given store base currency is invalid")
 	}
 
-	switch value := manager.Handler.(type) {
+	switch value := manager.GetHandler().(type) {
 	case currencyLayer.Mock:
-		if value.ApiKey() != "" {
-			t.Errorf("The given key is invalid, %s", value.ApiKey())
-		}
-
-		if value.Source != "SGD" {
+		if value.GetSource() != "SGD" {
 			t.Errorf("The given currency is invalid")
 		}
 	default:
 		t.Errorf("The given store handler is invalid")
 		t.FailNow()
+	}
+
+	if rates, err := manager.GetExchangeRates(); err != nil || rates.Count() < 1 {
+		t.Errorf("The given manager [mock] has invalid rates")
 	}
 }
