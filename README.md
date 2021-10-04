@@ -4,18 +4,29 @@
 [![Go Report Card](https://goreportcard.com/badge/voyago/converter)](https://goreportcard.com/report/voyago/converter)
 [![Go Reference](https://pkg.go.dev/badge/github.com/voyago/converter.svg)](https://pkg.go.dev/github.com/voyago/converter)
 
-The converter is a data-agnostic library that allows you to perform currency conversions for a given request. Also, it is
-able to perform standalone conversion based on a given currency and price value pair.
+The converter is a data-agnostic currency conversion library that allows you to perform conversions based on a given
+currency and price value pair.
 
 ## Installation
 
 This library is based on [GO](https://golang.org). So before using it, make sure you have it installed in your machine.
 
-Once you have done this, you will be able to pull this library in by typing the following command in your terminal.
+Once you have done this, you will be able to pull this library in by typing the following command in your terminal within
+your go application or library.
+
+First, you need to ope you terminal and cd into your project directory, like so:
+
+```shell
+cd $HOME/your-project-rote-folder
+```
+
+After doing so, you would be able to type the following command to get this library installed. For instance,
 
 ```shell
 go get github.com/voyago/converter
 ```
+
+> Note: Make sure you have properly configured you go project.
 
 ## The data layer
 
