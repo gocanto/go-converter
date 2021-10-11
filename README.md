@@ -110,7 +110,7 @@ There are many ways you would be able to support my open source work. There is n
 Nevertheless :grinning:, I would propose the following
 
 - :arrow_up: Follow me on [Twitter](https://twitter.com/gocanto).
-- :star: Start the repository.
+- :star: Star the repository.
 - :handshake: Open a pull request to fix/improve the codebase.
 - :writing_hand: Open a pull request to improve the documentation.
 - :coffee: Buy me a [coffee](https://github.com/sponsors/gocanto)?
