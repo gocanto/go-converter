@@ -47,11 +47,20 @@ Moreover, this library ships with two different Currency Layer [implementations]
 since we had to mock handlers detail at the [unit testing](https://github.com/voyago/converter/blob/main/tests/unit/store/handler/currencyLayer_test.go#L19) level.
 
 ## Documentation
+
+* [Environment](#Environment)
 * [Models](#Models)
 * [Converter](#Converter)
 * [Supported currencies](#Supported-currencies)
 * [See consumers example](https://github.com/voyago/converter-tests)
 * [Test suit](https://github.com/voyago/converter/tree/main/tests)
+
+### Environment
+
+The environment is controlled by the [env package](https://github.com/voyago/converter/tree/main/environment) shipped within
+this library. It will allow you to choose what driver you would like to use when working in any given environment (staging, local, production, etc.)
+
+It will also require you to specify your consumer app root folder name in order for it to resolve your env file path. [See example](https://github.com/voyago/converter-tests/blob/main/main.go)
 
 ### Models
 
