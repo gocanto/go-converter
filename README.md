@@ -1,4 +1,4 @@
-## Converter
+## About the library
 
 ![tests workflow](https://github.com/voyago/converter/actions/workflows/test.yml/badge.svg)
 [![Go Report Card](https://goreportcard.com/badge/voyago/converter)](https://goreportcard.com/report/voyago/converter)
@@ -46,16 +46,12 @@ Also, if you are feeling curious, you can see how the store is able to [resolve 
 Moreover, this library ships with two different Currency Layer [implementations](https://github.com/voyago/converter/tree/main/pkg/store/handler/currencyLayer)
 since we had to mock handlers detail at the [unit testing](https://github.com/voyago/converter/blob/main/tests/unit/store/handler/currencyLayer_test.go#L19) level.
 
-## How do I use it?
-
-WIP; :bowtie:
-
-If you are feeling curious, you can check the whole [test suit](https://github.com/voyago/converter/tree/main/tests/unit/conversion) to find out how this library works?
-
-Moreover, we have published a [playground](https://github.com/voyago/converter-tests) to demonstrate how this library can be consumed.
-
 ## Documentation
 * [Models](#Models)
+* [Converter](#Converter)
+* [Supported currencies](#Supported currencies)
+* [See consumers example](https://github.com/voyago/converter-tests)
+* [Test suit](https://github.com/voyago/converter/tree/main/tests)
 
 ### Models
 
@@ -68,6 +64,28 @@ rates between currencies.
 - **Currencies:** It is a currency collection used to store information about all our [supported currencies](https://github.com/voyago/converter/blob/main/pkg/store/blueprint/currencies.go). It also serves as the main converter entry point to resolve currencies rate.
 - **Price:** It serves as a conversion blueprint storing all the required information used to perform a given conversion operation
 
+### Converter
+
+The converter is the main package shipped by this library. It is in charge of performing conversion operations for a given
+price and  destination currency.
+
+This functionality is given in two different ways, based on a given [abstract store](#Store based Converter) or as a [standalone function](#Standalone based Converter).
+
+### Store based Converter
+
+The store is a fetching mechanism that is able to find currencies exchange rates for any available driver through a unified
+interface. [See example](https://github.com/voyago/converter/blob/main/tests/unit/conversion/converter_test.go#L60-L84)
+
+### Standalone based Converter
+
+This standalone function allows you to perform currencies conversions bypassing the store implementation. Thus, you are
+given all the necessary freedom to build the conversion request. [See example](https://github.com/voyago/converter/blob/main/tests/unit/conversion/converter_test.go#L12-L58)
+
+### Supported currencies
+
+We work with a predefined currencies [blueprint](https://github.com/voyago/converter/blob/main/resources/currencies.json)
+that allows us to map given exchanges rates on demand. These rates are the ones used by our converter to perform operations.
+
 ## Contributing
 
 Please, feel free to fork this repository to contribute to it by submitting a functionalities/bugs-fixes pull request to enhance it.
@@ -78,6 +96,14 @@ Please see [License File](https://github.com/voyago/converter/blob/main/LICENSE)
 
 ## How can I thank you?
 
-Why not star this GitHub repository and share its link on your social network?
+There are many ways you would be able to support my open source work. There is not a right one to choose, so the choice is yours.
 
-> Don't forget to [follow me on twitter](https://twitter.com/gocanto)!
+Nevertheless :grinning:, I would propose the following
+
+- :arrow_up: Follow me on [Twitter](https://twitter.com/gocanto).
+- :star: Start the repository.
+- :handshake: Open a pull request to fix/improve the codebase.
+- :writing_hand: Open a pull request to improve the documentation.
+- :coffee: Buy me a [coffee](https://github.com/sponsors/gocanto)?
+
+> Thank you for reading this far. :blush:
