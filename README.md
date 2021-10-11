@@ -49,7 +49,7 @@ since we had to mock handlers detail at the [unit testing](https://github.com/vo
 ## Documentation
 * [Models](#Models)
 * [Converter](#Converter)
-* [Supported currencies](#Supported currencies)
+* [Supported currencies](#Supported-currencies)
 * [See consumers example](https://github.com/voyago/converter-tests)
 * [Test suit](https://github.com/voyago/converter/tree/main/tests)
 
@@ -69,7 +69,7 @@ rates between currencies.
 The converter is the main package shipped by this library. It is in charge of performing conversion operations for a given
 price and  destination currency.
 
-This functionality is given in two different ways, based on a given [abstract store](#Store based Converter) or as a [standalone function](#Standalone based Converter).
+This functionality is given in two different ways, based on a given [abstract store](#Store-based-Converter) or as a [standalone function](#Standalone-based-Converter).
 
 ### Store based Converter
 
