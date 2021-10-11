@@ -57,10 +57,16 @@ Moreover, we have published a [playground](https://github.com/voyago/converter-t
 ## Documentation
 * [Models](#Models)
 
-## Models
+### Models
 
-Models abstract the information related to currencies, plus add some convenient way to handle the types used by
-the converter.
+Models represent the abstraction between the converter and the real world.
+
+The converter utilizes the currency and currencies collection information to perform the required operations to find conversion
+rates between currencies.
+
+- **Currency:** It holds the currencies [body](https://github.com/voyago/converter/blob/main/pkg/model/currency.go) information.
+- **Currencies:** It is a currency collection used to store information about all our [supported currencies](https://github.com/voyago/converter/blob/main/pkg/store/blueprint/currencies.go). It also serves as the main converter entry point to resolve currencies rate.
+- **Price:** It serves as a conversion blueprint storing all the required information used to perform a given conversion operation
 
 ## Contributing
 
